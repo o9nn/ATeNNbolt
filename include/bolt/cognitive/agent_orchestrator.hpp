@@ -9,6 +9,7 @@
 #include <atomic>
 #include <thread>
 #include <condition_variable>
+#include <chrono>
 
 namespace bolt {
 namespace cognitive {

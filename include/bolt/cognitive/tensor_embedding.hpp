@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <random>
 #include <string>
+#include <limits>
 
 namespace bolt {
 namespace cognitive {
