@@ -384,6 +384,10 @@ target_link_libraries(demo_plugin_system PRIVATE bolt_lib)
 add_executable(demo_cognitive_fusion_reactor demo_cognitive_fusion_reactor.cpp)
 target_link_libraries(demo_cognitive_fusion_reactor PRIVATE bolt_lib)
 
+# Cognitive Fusion Reactor Tests
+add_executable(test_cognitive_fusion test_cognitive_fusion.cpp)
+target_link_libraries(test_cognitive_fusion PRIVATE bolt_lib)
+
 # Collaborative Editing Demo
 add_executable(demo_collaborative_editing demo_collaborative_editing.cpp)
 target_link_libraries(demo_collaborative_editing PRIVATE bolt_lib)

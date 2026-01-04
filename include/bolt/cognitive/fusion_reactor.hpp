@@ -25,6 +25,14 @@ namespace cognitive {
  * - Agent orchestration for multi-agent coordination (from cogzero)
  */
 class CognitiveFusionReactor {
+public:
+    // Attention allocation structure (ECAN-inspired)
+    struct AttentionValue {
+        float sti;  // Short-term importance
+        float lti;  // Long-term importance
+        float vlti; // Very long-term importance
+    };
+
 private:
     // Core components
     std::unique_ptr<AtomSpace> atomspace_;
@@ -41,11 +49,6 @@ private:
     mutable std::mutex relevance_mutex_;
     
     // Attention allocation (ECAN-inspired)
-    struct AttentionValue {
-        float sti;  // Short-term importance
-        float lti;  // Long-term importance
-        float vlti; // Very long-term importance
-    };
     std::unordered_map<AtomHandle, AttentionValue> attention_bank_;
     mutable std::mutex attention_mutex_;
     
