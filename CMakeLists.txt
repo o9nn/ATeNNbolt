@@ -206,6 +206,8 @@ add_library(bolt_lib
     src/bolt/network/message_compression.cpp
     src/bolt/network/network_buffer.cpp
     src/bolt/network/network_metrics.cpp
+    # Cognitive fusion components (ATenSpace + cogzero integration)
+    src/bolt/cognitive/atomspace.cpp
 )
 
 # Set library type based on BUILD_SHARED_LIBS option
@@ -377,6 +379,10 @@ target_link_libraries(bolt_terminal_ai PRIVATE bolt_lib)
 # Plugin System Demo
 add_executable(demo_plugin_system demo_plugin_system.cpp)
 target_link_libraries(demo_plugin_system PRIVATE bolt_lib)
+
+# Cognitive Fusion Reactor Demo
+add_executable(demo_cognitive_fusion_reactor demo_cognitive_fusion_reactor.cpp)
+target_link_libraries(demo_cognitive_fusion_reactor PRIVATE bolt_lib)
 
 # Collaborative Editing Demo
 add_executable(demo_collaborative_editing demo_collaborative_editing.cpp)
