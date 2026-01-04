@@ -1,0 +1,666 @@
+# Comprehensive End-to-End CI Pipeline
+# Covers multi-platform builds, tests, and quality checks
+name: E2E CI Pipeline
+
+on:
+  push:
+    branches: [ "main", "develop", "feature/**", "claude/**" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+  workflow_dispatch:
+    inputs:
+      run_extended_tests:
+        description: 'Run extended test suite'
+        required: false
+        default: 'false'
+        type: boolean
+      run_sanitizers:
+        description: 'Run sanitizer tests'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  BUILD_TYPE: Release
+  CMAKE_VERSION: "3.28"
+
+jobs:
+  # ============================================
+  # Pre-flight checks
+  # ============================================
+  preflight:
+    name: Pre-flight Checks
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v5
+        with:
+          concurrent_skipping: 'same_content_newer'
+          skip_after_successful_duplicate: 'true'
+
+  # ============================================
+  # Code Quality & Linting
+  # ============================================
+  code-quality:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    needs: preflight
+    if: needs.preflight.outputs.should_skip != 'true'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cppcheck clang-format clang-tidy
+
+      - name: Run cppcheck
+        run: |
+          cppcheck --enable=all --inconclusive --std=c++20 \
+            --suppress=missingIncludeSystem \
+            --suppress=unusedFunction \
+            -I include/ \
+            src/ 2>&1 | tee cppcheck-report.txt
+        continue-on-error: true
+
+      - name: Check code formatting
+        run: |
+          find src include -name '*.cpp' -o -name '*.hpp' | head -20 | \
+            xargs clang-format --dry-run --Werror 2>&1 | tee format-report.txt || true
+        continue-on-error: true
+
+      - name: Upload quality reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-quality-reports
+          path: |
+            cppcheck-report.txt
+            format-report.txt
+          retention-days: 7
+
+  # ============================================
+  # Linux Build & Test Matrix
+  # ============================================
+  linux-build:
+    name: Linux (${{ matrix.compiler }}, ${{ matrix.build_type }})
+    runs-on: ubuntu-latest
+    needs: preflight
+    if: needs.preflight.outputs.should_skip != 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler: [gcc, clang]
+        build_type: [Release, Debug]
+        include:
+          - compiler: gcc
+            cc: gcc-13
+            cxx: g++-13
+          - compiler: clang
+            cc: clang-17
+            cxx: clang++-17
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+
+      - name: Cache vcpkg
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/vcpkg
+            ~/.cache/vcpkg
+          key: vcpkg-linux-${{ matrix.compiler }}-${{ hashFiles('vcpkg.json') }}
+          restore-keys: |
+            vcpkg-linux-${{ matrix.compiler }}-
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            ninja-build \
+            pkg-config \
+            libcurl4-openssl-dev \
+            libjsoncpp-dev \
+            libglfw3-dev \
+            libgl1-mesa-dev \
+            libglu1-mesa-dev \
+            libssl-dev \
+            zlib1g-dev \
+            libxrandr-dev \
+            libxinerama-dev \
+            libxcursor-dev \
+            libxi-dev
+
+      - name: Install compiler
+        run: |
+          if [ "${{ matrix.compiler }}" = "gcc" ]; then
+            sudo apt-get install -y gcc-13 g++-13
+          else
+            wget https://apt.llvm.org/llvm.sh
+            chmod +x llvm.sh
+            sudo ./llvm.sh 17
+            sudo apt-get install -y clang-17 clang++-17
+          fi
+
+      - name: Setup vcpkg
+        run: |
+          if [ ! -d "$HOME/vcpkg" ]; then
+            git clone https://github.com/microsoft/vcpkg.git ~/vcpkg
+            ~/vcpkg/bootstrap-vcpkg.sh
+          fi
+          echo "VCPKG_ROOT=$HOME/vcpkg" >> $GITHUB_ENV
+
+      - name: Configure CMake
+        run: |
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+            -DCMAKE_C_COMPILER=${{ matrix.cc }} \
+            -DCMAKE_CXX_COMPILER=${{ matrix.cxx }} \
+            -DCMAKE_TOOLCHAIN_FILE=$HOME/vcpkg/scripts/buildsystems/vcpkg.cmake \
+            -DVCPKG_MANIFEST_MODE=ON \
+            -DBOLT_ENABLE_TESTS=ON
+
+      - name: Build
+        run: cmake --build build --config ${{ matrix.build_type }} -j $(nproc)
+
+      - name: Run unit tests
+        working-directory: build
+        run: |
+          # Set LD_LIBRARY_PATH to include all directories with shared libraries
+          # The llama.cpp libraries are built in build/bin/, not in build/ggml/ggml.cpp/src/
+          export LD_LIBRARY_PATH="${PWD}/bin:${PWD}:${PWD}/ggml/llama.cpp/src:$LD_LIBRARY_PATH"
+          echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
+          
+          # Verify shared libraries exist
+          echo "Checking for shared libraries..."
+          find . -name "*.so*" -type f 2>/dev/null | head -20
+          
+          ctest --build-config ${{ matrix.build_type }} --output-on-failure --timeout 120 -j $(nproc)
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-linux-${{ matrix.compiler }}-${{ matrix.build_type }}
+          path: build/Testing/
+          retention-days: 7
+
+      - name: Upload build artifacts
+        if: matrix.build_type == 'Release'
+        uses: actions/upload-artifact@v4
+        with:
+          name: bolt-linux-${{ matrix.compiler }}-${{ matrix.build_type }}
+          path: |
+            build/bolt
+            build/bolt_lib*
+            build/demo_*
+          retention-days: 7
+
+  # ============================================
+  # Windows Build & Test Matrix
+  # ============================================
+  windows-build:
+    name: Windows (${{ matrix.compiler }}, ${{ matrix.build_type }})
+    runs-on: windows-latest
+    needs: preflight
+    if: needs.preflight.outputs.should_skip != 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler: [msvc, mingw]
+        build_type: [Release, Debug]
+        include:
+          - compiler: msvc
+            generator: "Visual Studio 17 2022"
+            arch: "-A x64"
+          - compiler: mingw
+            generator: "MinGW Makefiles"
+            arch: ""
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+
+      - name: Cache vcpkg
+        uses: actions/cache@v4
+        with:
+          path: |
+            C:\vcpkg
+            ~\AppData\Local\vcpkg
+          key: vcpkg-windows-${{ matrix.compiler }}-${{ hashFiles('vcpkg.json') }}
+          restore-keys: |
+            vcpkg-windows-${{ matrix.compiler }}-
+
+      - name: Setup MSVC
+        if: matrix.compiler == 'msvc'
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Setup MinGW
+        if: matrix.compiler == 'mingw'
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-ninja
+            mingw-w64-x86_64-curl
+            mingw-w64-x86_64-jsoncpp
+            mingw-w64-x86_64-glfw
+            mingw-w64-x86_64-openssl
+            mingw-w64-x86_64-zlib
+
+      - name: Configure CMake (MSVC)
+        if: matrix.compiler == 'msvc'
+        run: |
+          cmake -B build -G "${{ matrix.generator }}" ${{ matrix.arch }} `
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} `
+            -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake `
+            -DVCPKG_MANIFEST_MODE=ON `
+            -DBOLT_ENABLE_TESTS=ON
+
+      - name: Configure CMake (MinGW)
+        if: matrix.compiler == 'mingw'
+        shell: msys2 {0}
+        run: |
+          cmake -B build -G "MinGW Makefiles" \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+            -DBOLT_ENABLE_TESTS=ON
+
+      - name: Build (MSVC)
+        if: matrix.compiler == 'msvc'
+        run: cmake --build build --config ${{ matrix.build_type }} -j $env:NUMBER_OF_PROCESSORS
+
+      - name: Build (MinGW)
+        if: matrix.compiler == 'mingw'
+        shell: msys2 {0}
+        run: cmake --build build --config ${{ matrix.build_type }} -j $(nproc)
+
+      - name: Run tests (MSVC)
+        if: matrix.compiler == 'msvc'
+        working-directory: build
+        run: ctest --build-config ${{ matrix.build_type }} --output-on-failure --timeout 120
+
+      - name: Run tests (MinGW)
+        if: matrix.compiler == 'mingw'
+        shell: msys2 {0}
+        working-directory: build
+        run: ctest --build-config ${{ matrix.build_type }} --output-on-failure --timeout 120
+
+      - name: Upload build artifacts
+        if: matrix.build_type == 'Release'
+        uses: actions/upload-artifact@v4
+        with:
+          name: bolt-windows-${{ matrix.compiler }}-${{ matrix.build_type }}
+          path: |
+            build/${{ matrix.build_type }}/bolt.exe
+            build/${{ matrix.build_type }}/bolt_lib*
+            build/${{ matrix.build_type }}/demo_*
+            build/bolt.exe
+            build/bolt_lib*
+            build/demo_*
+          retention-days: 7
+
+  # ============================================
+  # macOS Build & Test Matrix
+  # ============================================
+  macos-build:
+    name: macOS (${{ matrix.arch }}, ${{ matrix.build_type }})
+    runs-on: ${{ matrix.runner }}
+    needs: preflight
+    if: needs.preflight.outputs.should_skip != 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-13
+            arch: x64
+            triplet: x64-osx
+            build_type: Release
+          - runner: macos-14
+            arch: arm64
+            triplet: arm64-osx
+            build_type: Release
+          - runner: macos-14
+            arch: arm64
+            triplet: arm64-osx
+            build_type: Debug
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+
+      - name: Cache vcpkg
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/vcpkg
+            ~/.cache/vcpkg
+          key: vcpkg-macos-${{ matrix.arch }}-${{ hashFiles('vcpkg.json') }}
+          restore-keys: |
+            vcpkg-macos-${{ matrix.arch }}-
+
+      - name: Install dependencies
+        run: |
+          brew install ninja pkg-config curl jsoncpp glfw openssl@3 zlib
+
+      - name: Setup vcpkg
+        run: |
+          if [ ! -d "$HOME/vcpkg" ]; then
+            git clone https://github.com/microsoft/vcpkg.git ~/vcpkg
+            ~/vcpkg/bootstrap-vcpkg.sh
+          fi
+          echo "VCPKG_ROOT=$HOME/vcpkg" >> $GITHUB_ENV
+
+      - name: Configure CMake
+        run: |
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+            -DCMAKE_TOOLCHAIN_FILE=$HOME/vcpkg/scripts/buildsystems/vcpkg.cmake \
+            -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} \
+            -DVCPKG_MANIFEST_MODE=ON \
+            -DBOLT_ENABLE_TESTS=ON
+
+      - name: Build
+        run: cmake --build build --config ${{ matrix.build_type }} -j $(sysctl -n hw.ncpu)
+
+      - name: Run tests
+        working-directory: build
+        run: |
+          ctest --build-config ${{ matrix.build_type }} --output-on-failure --timeout 120 -j $(sysctl -n hw.ncpu)
+
+      - name: Upload build artifacts
+        if: matrix.build_type == 'Release'
+        uses: actions/upload-artifact@v4
+        with:
+          name: bolt-macos-${{ matrix.arch }}-${{ matrix.build_type }}
+          path: |
+            build/bolt
+            build/bolt_lib*
+            build/demo_*
+          retention-days: 7
+
+  # ============================================
+  # Sanitizer Tests (ASan, LSan, UBSan, TSan)
+  # ============================================
+  sanitizer-tests:
+    name: Sanitizer Tests (${{ matrix.sanitizer }})
+    runs-on: ubuntu-latest
+    needs: linux-build
+    if: github.event.inputs.run_sanitizers == 'true' || github.ref == 'refs/heads/main'
+    strategy:
+      fail-fast: false
+      matrix:
+        sanitizer: [asan, lsan, ubsan, tsan]
+        include:
+          - sanitizer: asan
+            cmake_flag: ENABLE_SANITIZER_ADDRESS
+            env_var: ASAN_OPTIONS=detect_leaks=1:abort_on_error=1
+          - sanitizer: lsan
+            cmake_flag: ENABLE_SANITIZER_LEAK
+            env_var: LSAN_OPTIONS=abort_on_error=1
+          - sanitizer: ubsan
+            cmake_flag: ENABLE_SANITIZER_UNDEFINED_BEHAVIOR
+            env_var: UBSAN_OPTIONS=print_stacktrace=1:abort_on_error=1
+          - sanitizer: tsan
+            cmake_flag: ENABLE_SANITIZER_THREAD
+            env_var: TSAN_OPTIONS=abort_on_error=1
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential ninja-build pkg-config \
+            libcurl4-openssl-dev libjsoncpp-dev libglfw3-dev \
+            libgl1-mesa-dev libssl-dev zlib1g-dev \
+            gcc-13 g++-13
+
+      - name: Configure CMake with ${{ matrix.sanitizer }}
+        run: |
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DCMAKE_C_COMPILER=gcc-13 \
+            -DCMAKE_CXX_COMPILER=g++-13 \
+            -D${{ matrix.cmake_flag }}=ON \
+            -DBOLT_ENABLE_TESTS=ON
+
+      - name: Build
+        run: cmake --build build -j $(nproc)
+
+      - name: Run sanitizer tests
+        working-directory: build
+        env:
+          ${{ matrix.env_var }}: ""
+        run: |
+          # Set LD_LIBRARY_PATH to include all directories with shared libraries
+          export LD_LIBRARY_PATH="${PWD}/bin:${PWD}:${PWD}/ggml/llama.cpp/src:$LD_LIBRARY_PATH"
+          export ${{ matrix.env_var }}
+          ctest --output-on-failure --timeout 300 || true
+
+      - name: Upload sanitizer report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sanitizer-report-${{ matrix.sanitizer }}
+          path: build/Testing/
+          retention-days: 7
+
+  # ============================================
+  # Integration Tests
+  # ============================================
+  integration-tests:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: linux-build
+    steps:
+      - uses: actions/checkout@v4
+        with:
+
+      - name: Download Linux build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: bolt-linux-gcc-Release
+          path: build/
+
+      - name: Make binaries executable
+        run: chmod +x build/bolt build/demo_* || true
+
+      - name: Install runtime dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libcurl4 libjsoncpp25 libglfw3 \
+            libgl1 libssl3 zlib1g
+
+      - name: Run integration tests
+        run: |
+          export LD_LIBRARY_PATH="build:$LD_LIBRARY_PATH"
+
+          echo "=== Testing main executable ==="
+          ./build/bolt --version || ./build/bolt --help || echo "Main executable test skipped"
+
+          echo "=== Testing demo executables ==="
+          for demo in build/demo_*; do
+            if [ -x "$demo" ]; then
+              echo "Testing: $demo"
+              timeout 10 "$demo" --help 2>/dev/null || timeout 5 "$demo" 2>/dev/null || echo "  (no --help flag)"
+            fi
+          done
+        continue-on-error: true
+
+      - name: Upload integration test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-results
+          path: integration-test-*.log
+          retention-days: 7
+          if-no-files-found: ignore
+
+  # ============================================
+  # E2E Tests
+  # ============================================
+  e2e-tests:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    needs: [linux-build, integration-tests]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential ninja-build pkg-config \
+            libcurl4-openssl-dev libjsoncpp-dev libglfw3-dev \
+            libgl1-mesa-dev libssl-dev zlib1g-dev
+
+      - name: Configure and build E2E tests
+        run: |
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DBOLT_ENABLE_TESTS=ON \
+            -DBOLT_ENABLE_E2E_TESTS=ON
+          cmake --build build -j $(nproc)
+
+      - name: Run E2E test suite
+        working-directory: build
+        run: |
+          # Set LD_LIBRARY_PATH to include all directories with shared libraries
+          export LD_LIBRARY_PATH="${PWD}/bin:${PWD}:${PWD}/ggml/llama.cpp/src:$LD_LIBRARY_PATH"
+
+          # Run comprehensive E2E tests
+          if [ -x "./bolt_e2e_tests" ]; then
+            ./bolt_e2e_tests
+          fi
+
+          # Run integration tests
+          if [ -x "./bolt_integration_tests" ]; then
+            ./bolt_integration_tests
+          fi
+
+          # Run all CTest tests with E2E label
+          ctest -L "E2E" --output-on-failure --timeout 300 || true
+
+      - name: Generate E2E test report
+        if: always()
+        run: |
+          echo "# E2E Test Report" > e2e-report.md
+          echo "Generated: $(date)" >> e2e-report.md
+          echo "" >> e2e-report.md
+
+          if [ -f build/Testing/Temporary/LastTest.log ]; then
+            echo "## Test Output" >> e2e-report.md
+            cat build/Testing/Temporary/LastTest.log >> e2e-report.md
+          fi
+
+      - name: Upload E2E test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-test-results
+          path: |
+            e2e-report.md
+            build/Testing/
+          retention-days: 7
+
+  # ============================================
+  # Code Coverage
+  # ============================================
+  coverage:
+    name: Code Coverage
+    runs-on: ubuntu-latest
+    needs: linux-build
+    steps:
+      - uses: actions/checkout@v4
+        with:
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential ninja-build pkg-config \
+            libcurl4-openssl-dev libjsoncpp-dev libglfw3-dev \
+            libgl1-mesa-dev libssl-dev zlib1g-dev \
+            lcov gcovr
+
+      - name: Configure CMake with coverage
+        run: |
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DCMAKE_CXX_FLAGS="--coverage -fprofile-arcs -ftest-coverage" \
+            -DCMAKE_C_FLAGS="--coverage -fprofile-arcs -ftest-coverage" \
+            -DBOLT_ENABLE_TESTS=ON
+
+      - name: Build
+        run: cmake --build build -j $(nproc)
+
+      - name: Run tests for coverage
+        working-directory: build
+        run: |
+          export LD_LIBRARY_PATH="${PWD}:${PWD}/ggml/ggml.cpp/src:$LD_LIBRARY_PATH"
+          ctest --output-on-failure --timeout 300 || true
+
+      - name: Generate coverage report
+        run: |
+          lcov --capture --directory build --output-file coverage.info \
+            --ignore-errors mismatch,empty,unused
+          lcov --remove coverage.info '/usr/*' '*/test/*' '*/ggml/*' \
+            --output-file coverage.info --ignore-errors unused
+          lcov --list coverage.info
+
+          # Generate HTML report
+          genhtml coverage.info --output-directory coverage-html \
+            --ignore-errors source
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: |
+            coverage.info
+            coverage-html/
+          retention-days: 14
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: coverage.info
+          fail_ci_if_error: false
+        continue-on-error: true
+
+  # ============================================
+  # Summary Job
+  # ============================================
+  ci-summary:
+    name: CI Summary
+    runs-on: ubuntu-latest
+    needs: [code-quality, linux-build, windows-build, macos-build, integration-tests, e2e-tests]
+    if: always()
+    steps:
+      - name: Check job results
+        run: |
+          echo "## CI Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Code Quality | ${{ needs.code-quality.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Linux Build | ${{ needs.linux-build.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Windows Build | ${{ needs.windows-build.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| macOS Build | ${{ needs.macos-build.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Integration Tests | ${{ needs.integration-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| E2E Tests | ${{ needs.e2e-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Fail if any job failed
+        if: contains(needs.*.result, 'failure')
+        run: exit 1

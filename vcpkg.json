@@ -1,0 +1,59 @@
+{
+  "name": "bolt-cpp",
+  "version": "1.0.0",
+  "description": "Modern C++ implementation of Bolt IDE with AI integration",
+  "license": "MIT",
+  "dependencies": [
+    {
+      "name": "curl",
+      "features": ["tool", "ssl"]
+    },
+    {
+      "name": "jsoncpp"
+    },
+    {
+      "name": "glfw3"
+    },
+    {
+      "name": "imgui",
+      "features": ["glfw-binding", "opengl3-binding"]
+    },
+    {
+      "name": "opengl",
+      "platform": "!uwp"
+    }
+  ],
+  "features": {
+    "ai": {
+      "description": "AI integration features",
+      "dependencies": [
+        "curl",
+        "jsoncpp"
+      ]
+    },
+    "gui": {
+      "description": "GUI components",
+      "dependencies": [
+        "glfw3",
+        "imgui",
+        "opengl"
+      ]
+    },
+    "networking": {
+      "description": "Network components",
+      "dependencies": [
+        "curl"
+      ]
+    },
+    "tests": {
+      "description": "Testing framework",
+      "dependencies": [
+        {
+          "name": "catch2",
+          "version>=": "3.0.0"
+        }
+      ]
+    }
+  },
+  "builtin-baseline": "de117c9255ff3d68c1ba730b6c96dc3418c74ae3"
+}

@@ -1,0 +1,230 @@
+# Valgrind Suppression File for Bolt C++ ML
+# This file contains suppressions for known false positives
+
+# ============================================
+# Standard Library Suppressions
+# ============================================
+
+{
+   std_string_alloc
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   ...
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE*
+}
+
+{
+   std_vector_alloc
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   ...
+   fun:_ZNSt6vectorI*
+}
+
+{
+   libstdc++_pool_alloc
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   ...
+   obj:*/libstdc++.so*
+}
+
+# ============================================
+# pthread Suppressions
+# ============================================
+
+{
+   pthread_create_reachable
+   Memcheck:Leak
+   match-leak-kinds: possible,reachable
+   fun:calloc
+   ...
+   fun:pthread_create*
+}
+
+{
+   pthread_exit_leak
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   ...
+   fun:pthread_exit
+}
+
+# ============================================
+# OpenGL/GLFW Suppressions
+# ============================================
+
+{
+   glfw_init
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:glfwInit
+}
+
+{
+   mesa_driver_load
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libGL.so*
+}
+
+{
+   nvidia_driver
+   Memcheck:Leak
+   ...
+   obj:*/libnvidia-glcore.so*
+}
+
+# ============================================
+# libcurl Suppressions
+# ============================================
+
+{
+   curl_global_init
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:curl_global_init
+}
+
+{
+   curl_easy_init
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:curl_easy_init
+}
+
+# ============================================
+# OpenSSL Suppressions
+# ============================================
+
+{
+   openssl_init
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:OPENSSL_init_ssl
+}
+
+{
+   openssl_crypto
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libcrypto.so*
+}
+
+# ============================================
+# jsoncpp Suppressions
+# ============================================
+
+{
+   jsoncpp_reader
+   Memcheck:Leak
+   match-leak-kinds: possible
+   ...
+   fun:*Json*Reader*
+}
+
+# ============================================
+# dlopen/dlsym Suppressions (Plugin System)
+# ============================================
+
+{
+   dlopen_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:dlopen*
+}
+
+{
+   dlsym_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:dlsym
+}
+
+# ============================================
+# GGML/llama.cpp Suppressions
+# ============================================
+
+{
+   ggml_alloc
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:ggml_*
+}
+
+{
+   llama_init
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:llama_*
+}
+
+# ============================================
+# ImGui Suppressions
+# ============================================
+
+{
+   imgui_context
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:*ImGui*CreateContext*
+}
+
+# ============================================
+# Conditional Jump Suppressions
+# ============================================
+
+{
+   glibc_cond_jump
+   Memcheck:Cond
+   obj:/lib*/libc-*.so
+}
+
+{
+   libstdc++_cond_jump
+   Memcheck:Cond
+   obj:/usr/lib*/libstdc++.so*
+}
+
+# ============================================
+# Uninitialized Value Suppressions
+# ============================================
+
+{
+   glibc_uninit
+   Memcheck:Value8
+   obj:/lib*/libc-*.so
+}
+
+{
+   ld_linux_uninit
+   Memcheck:Cond
+   obj:/lib*/ld-linux*.so*
+}
+
+# ============================================
+# Known Test Framework Leaks
+# ============================================
+
+{
+   test_framework_static
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_ZN4bolt4test9TestSuite*
+}

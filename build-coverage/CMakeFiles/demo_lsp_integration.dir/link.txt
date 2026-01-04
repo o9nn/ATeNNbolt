@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG  --coverage -Wl,--dependency-file=CMakeFiles/demo_lsp_integration.dir/link.d CMakeFiles/demo_lsp_integration.dir/demo_lsp_integration.cpp.o -o demo_lsp_integration  -Wl,-rpath,"\$ORIGIN/../lib:\$ORIGIN/lib:/usr/local/lib"

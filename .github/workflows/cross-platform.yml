@@ -1,0 +1,267 @@
+name: Cross-Platform Build and Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ published ]
+
+env:
+  BUILD_TYPE: Release
+  VCPKG_FEATURE_FLAGS: manifests,versions,binarycaching,registries
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Windows builds
+          - name: "Windows MSVC x64"
+            os: windows-latest
+            preset: windows-msvc-x64
+            generator: "Visual Studio 17 2022"
+            arch: x64
+            triplet: x64-windows
+            
+          - name: "Windows MinGW x64"
+            os: windows-latest
+            preset: windows-mingw-x64
+            generator: "MinGW Makefiles"
+            triplet: x64-mingw-static
+            
+          # macOS builds
+          - name: "macOS Intel x64"
+            os: macos-13
+            preset: macos-x64
+            triplet: x64-osx
+            
+          - name: "macOS Apple Silicon ARM64"
+            os: macos-14
+            preset: macos-arm64
+            triplet: arm64-osx
+            
+          - name: "macOS Universal Binary"
+            os: macos-14
+            preset: macos-universal
+            triplet: x64-osx
+            
+          # Linux builds
+          - name: "Linux x64 (Ubuntu)"
+            os: ubuntu-latest
+            preset: linux-x64
+            triplet: x64-linux
+            
+          - name: "Linux x64 (GCC 9)"
+            os: ubuntu-20.04
+            preset: linux-x64
+            triplet: x64-linux
+            compiler_version: 9
+
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.name }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Clone vcpkg for SSR dependencies
+      run: |
+        mkdir -p ./ssr_deps
+        git clone https://github.com/Microsoft/vcpkg.git ./ssr_deps/vcpkg
+        cd ./ssr_deps/vcpkg
+        git checkout de117c9255ff3d68c1ba730b6c96dc3418c74ae3
+        ./bootstrap-vcpkg.sh -disableMetrics
+      shell: bash
+      if: runner.os != 'Windows'
+      
+    - name: Clone vcpkg for SSR dependencies (Windows)
+      run: |
+        mkdir -p ./ssr_deps
+        git clone https://github.com/Microsoft/vcpkg.git ./ssr_deps/vcpkg
+        cd ./ssr_deps/vcpkg
+        git checkout de117c9255ff3d68c1ba730b6c96dc3418c74ae3
+        .\bootstrap-vcpkg.bat -disableMetrics
+      shell: pwsh
+      if: runner.os == 'Windows'
+        
+    - name: Setup MSVC (Windows)
+      if: matrix.os == 'windows-latest' && contains(matrix.preset, 'msvc')
+      uses: microsoft/setup-msbuild@v2
+      
+    - name: Setup MinGW (Windows)
+      if: matrix.os == 'windows-latest' && contains(matrix.preset, 'mingw')
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        update: true
+        install: >-
+          mingw-w64-x86_64-gcc
+          mingw-w64-x86_64-cmake
+          mingw-w64-x86_64-ninja
+          
+    - name: Setup specific GCC version (Linux)
+      if: matrix.compiler_version && matrix.os == 'ubuntu-20.04'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc-${{ matrix.compiler_version }} g++-${{ matrix.compiler_version }}
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${{ matrix.compiler_version }} 100
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${{ matrix.compiler_version }} 100
+        
+    - name: Install system dependencies (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential \
+          cmake \
+          ninja-build \
+          pkg-config \
+          libcurl4-openssl-dev \
+          libjsoncpp-dev \
+          libglfw3-dev \
+          libgl1-mesa-dev \
+          libxrandr-dev \
+          libxinerama-dev \
+          libxcursor-dev \
+          libxi-dev
+          
+    - name: Install system dependencies (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        # Update Homebrew and install dependencies
+        brew update
+        brew install cmake ninja pkg-config curl jsoncpp glfw
+        
+    - name: Cache vcpkg packages
+      uses: actions/cache@v4
+      with:
+        path: |
+          ${{ runner.workspace }}/vcpkg
+          ~/.cache/vcpkg
+          ~/Library/Caches/vcpkg
+          %LOCALAPPDATA%\vcpkg
+        key: ${{ matrix.triplet }}-vcpkg-${{ hashFiles('vcpkg.json') }}
+        restore-keys: |
+          ${{ matrix.triplet }}-vcpkg-
+          
+    - name: Configure CMake
+      run: cmake --preset ${{ matrix.preset }}
+      env:
+        VCPKG_DEFAULT_TRIPLET: ${{ matrix.triplet }}
+        
+    - name: Build project
+      run: cmake --build --preset ${{ matrix.preset }}
+      
+    - name: Run tests
+      run: ctest --preset default --output-on-failure
+      working-directory: build
+      continue-on-error: true
+      
+    - name: Create packages
+      if: github.event_name == 'release'
+      run: |
+        cd build
+        cpack
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: bolt-cpp-${{ matrix.name }}-${{ github.sha }}
+        path: |
+          build/bolt*
+          build/*.exe
+          build/*.app
+          build/*.deb
+          build/*.rpm
+          build/*.dmg
+          build/*.msi
+          build/*.zip
+          build/*.tar.gz
+        retention-days: 30
+        
+    - name: Upload packages to release
+      if: github.event_name == 'release'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          build/*.exe
+          build/*.dmg
+          build/*.deb
+          build/*.rpm
+          build/*.msi
+          build/*.zip
+          build/*.tar.gz
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  cross-compile:
+    name: Cross-compilation targets
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          - name: "ARM64 Linux"
+            triplet: arm64-linux
+            gcc: aarch64-linux-gnu
+          - name: "ARM32 Linux"
+            triplet: arm-linux
+            gcc: arm-linux-gnueabihf
+            
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup cross-compilation toolchain
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc-${{ matrix.gcc }} g++-${{ matrix.gcc }}
+        
+    - name: Clone vcpkg for cross-compilation
+      run: |
+        mkdir -p ./ssr_deps
+        git clone https://github.com/Microsoft/vcpkg.git ./ssr_deps/vcpkg
+        cd ./ssr_deps/vcpkg
+        git checkout de117c9255ff3d68c1ba730b6c96dc3418c74ae3
+        ./bootstrap-vcpkg.sh -disableMetrics
+        
+    - name: Cross-compile
+      run: |
+        mkdir build-cross
+        cd build-cross
+        cmake .. -DCMAKE_TOOLCHAIN_FILE=../ssr_deps/vcpkg/scripts/buildsystems/vcpkg.cmake \
+                 -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} \
+                 -DCMAKE_BUILD_TYPE=Release
+        make -j$(nproc)
+        
+  documentation:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install documentation tools
+      run: |
+        pip install mkdocs mkdocs-material mkdocs-mermaid2-plugin
+        
+    - name: Build documentation
+      run: |
+        mkdocs build
+        
+    - name: Deploy documentation
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site

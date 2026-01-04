@@ -1,0 +1,156 @@
+name: RPM Package Build
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-rpm:
+    runs-on: ubuntu-latest
+    container:
+      image: fedora:latest
+    
+    steps:
+    - name: Install build dependencies
+      run: |
+        dnf install -y \
+          gcc-c++ \
+          cmake \
+          make \
+          git \
+          openssl-devel \
+          libcurl-devel \
+          glfw-devel \
+          mesa-libGL-devel \
+          mesa-libGLU-devel \
+          zlib-devel \
+          jsoncpp-devel \
+          rpm-build \
+          rpmdevtools
+    
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Install vcpkg
+      run: |
+        git clone https://github.com/microsoft/vcpkg.git vcpkg_tool
+        ./vcpkg_tool/bootstrap-vcpkg.sh
+    
+    - name: Install dependencies via vcpkg
+      run: |
+        cd $GITHUB_WORKSPACE
+        ./vcpkg_tool/vcpkg install --triplet=x64-linux
+    
+    - name: Build project
+      run: |
+        mkdir -p build
+        cd build
+        cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg_tool/scripts/buildsystems/vcpkg.cmake \
+              -DCMAKE_BUILD_TYPE=Release \
+              -DCMAKE_INSTALL_PREFIX=/usr \
+              -DBUILD_SHARED_LIBS=ON ..
+        make -j$(nproc)
+    
+    - name: Create RPM package
+      run: |
+        VERSION=$(git describe --tags --always | sed 's/^v//')
+        PACKAGE_NAME="bolt-cppml"
+        
+        # Setup RPM build environment
+        rpmdev-setuptree
+        
+        # Create spec file
+        cat > ~/rpmbuild/SPECS/${PACKAGE_NAME}.spec << EOF
+        Name:           ${PACKAGE_NAME}
+        Version:        ${VERSION}
+        Release:        1%{?dist}
+        Summary:        Modern C++ implementation of Bolt IDE with AI integration
+        
+        License:        MIT
+        URL:            https://github.com/cogpy/bolt-cppml
+        Source0:        %{name}-%{version}.tar.gz
+        
+        BuildRequires:  gcc-c++
+        BuildRequires:  cmake
+        BuildRequires:  openssl-devel
+        BuildRequires:  libcurl-devel
+        BuildRequires:  glfw-devel
+        BuildRequires:  mesa-libGL-devel
+        BuildRequires:  mesa-libGLU-devel
+        BuildRequires:  zlib-devel
+        BuildRequires:  jsoncpp-devel
+        
+        Requires:       openssl-libs
+        Requires:       libcurl
+        Requires:       glfw
+        Requires:       mesa-libGL
+        Requires:       mesa-libGLU
+        Requires:       zlib
+        Requires:       jsoncpp
+        
+        %description
+        Bolt C++ is a modern C++ implementation of the Bolt IDE core components
+        with AI integration and real-time collaborative features.
+        
+        Features include:
+        - GGML integration for AI model inference
+        - RWKV implementation for RNN capabilities
+        - Multi-cursor support and syntax highlighting
+        - Integrated debugger
+        - WebSocket server for real-time collaboration
+        
+        %prep
+        %setup -q
+        
+        %build
+        mkdir -p build
+        cd build
+        %cmake -DCMAKE_BUILD_TYPE=Release ..
+        %make_build
+        
+        %install
+        cd build
+        %make_install
+        
+        %files
+        %license LICENSE
+        %doc README.md
+        /usr/bin/bolt
+        /usr/lib*/libbolt_lib.so*
+        /usr/lib*/libggml*.so*
+        
+        %changelog
+        * $(date "+%a %b %d %Y") Bolt C++ Team <team@bolt-cppml.org> - ${VERSION}-1
+        - Release ${VERSION}
+        EOF
+        
+        # Create source tarball
+        mkdir -p ~/rpmbuild/SOURCES
+        tar czf ~/rpmbuild/SOURCES/${PACKAGE_NAME}-${VERSION}.tar.gz \
+          --transform "s,^,${PACKAGE_NAME}-${VERSION}/," \
+          --exclude='.git' \
+          --exclude='build' \
+          --exclude='vcpkg_tool' \
+          .
+        
+        # Build RPM
+        rpmbuild -ba ~/rpmbuild/SPECS/${PACKAGE_NAME}.spec
+        
+        # Copy RPM to workspace
+        cp ~/rpmbuild/RPMS/*/${PACKAGE_NAME}-${VERSION}-*.rpm .
+    
+    - name: Upload RPM package
+      uses: actions/upload-artifact@v4
+      with:
+        name: rpm-package
+        path: '*.rpm'
+    
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: '*.rpm'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

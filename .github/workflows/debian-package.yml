@@ -1,0 +1,166 @@
+name: Debian Package Build
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ubuntu_version: ['22.04', '24.04']
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up build environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential \
+          cmake \
+          pkg-config \
+          libssl-dev \
+          libcurl4-openssl-dev \
+          libglfw3-dev \
+          libgl1-mesa-dev \
+          libglu1-mesa-dev \
+          zlib1g-dev \
+          libjsoncpp-dev \
+          git \
+          debhelper \
+          devscripts \
+          dh-make
+    
+    - name: Install vcpkg
+      run: |
+        git clone https://github.com/microsoft/vcpkg.git vcpkg_tool
+        ./vcpkg_tool/bootstrap-vcpkg.sh
+    
+    - name: Install dependencies via vcpkg
+      run: |
+        cd $GITHUB_WORKSPACE
+        ./vcpkg_tool/vcpkg install --triplet=x64-linux
+    
+    - name: Build project
+      run: |
+        mkdir -p build
+        cd build
+        cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg_tool/scripts/buildsystems/vcpkg.cmake \
+              -DCMAKE_BUILD_TYPE=Release \
+              -DCMAKE_INSTALL_PREFIX=/usr \
+              -DBUILD_SHARED_LIBS=ON ..
+        make -j$(nproc)
+    
+    - name: Create Debian package structure
+      run: |
+        VERSION=$(git describe --tags --always | sed 's/^v//')
+        PACKAGE_NAME="bolt-cppml"
+        ARCH="amd64"
+        
+        mkdir -p debian-package/DEBIAN
+        mkdir -p debian-package/usr/bin
+        mkdir -p debian-package/usr/lib
+        mkdir -p debian-package/usr/share/applications
+        mkdir -p debian-package/usr/share/doc/${PACKAGE_NAME}
+        mkdir -p debian-package/usr/share/pixmaps
+        
+        # Copy binaries
+        cp build/bolt debian-package/usr/bin/
+        if [ -f build/libbolt_lib.so ]; then
+          cp build/libbolt_lib.so* debian-package/usr/lib/
+        fi
+        
+        # Copy GGML libraries if they exist
+        if [ -d build/ggml/ggml.cpp/src ]; then
+          cp build/ggml/ggml.cpp/src/libggml*.so* debian-package/usr/lib/ 2>/dev/null || true
+        fi
+        
+        # Create control file
+        cat > debian-package/DEBIAN/control << EOF
+        Package: ${PACKAGE_NAME}
+        Version: ${VERSION}
+        Section: devel
+        Priority: optional
+        Architecture: ${ARCH}
+        Depends: libssl3 | libssl1.1, libcurl4, libglfw3, libgl1, libglu1-mesa, zlib1g, libjsoncpp25
+        Maintainer: Bolt C++ Team <team@bolt-cppml.org>
+        Description: Modern C++ implementation of Bolt IDE with AI integration
+         Bolt C++ is a modern C++ implementation of the Bolt IDE core components
+         with AI integration and real-time collaborative features.
+         .
+         Features include:
+          - GGML integration for AI model inference
+          - RWKV implementation for RNN capabilities
+          - Multi-cursor support and syntax highlighting
+          - Integrated debugger
+          - WebSocket server for real-time collaboration
+        Homepage: https://github.com/cogpy/bolt-cppml
+        EOF
+        
+        # Create desktop entry
+        cat > debian-package/usr/share/applications/bolt-cppml.desktop << EOF
+        [Desktop Entry]
+        Type=Application
+        Name=Bolt C++
+        Comment=Modern C++ IDE with AI integration
+        Exec=/usr/bin/bolt
+        Icon=bolt-cppml
+        Terminal=false
+        Categories=Development;IDE;
+        EOF
+        
+        # Copy documentation
+        cp README.md debian-package/usr/share/doc/${PACKAGE_NAME}/
+        if [ -f LICENSE ]; then
+          cp LICENSE debian-package/usr/share/doc/${PACKAGE_NAME}/copyright
+        elif [ -f LICENSE.md ]; then
+          cp LICENSE.md debian-package/usr/share/doc/${PACKAGE_NAME}/copyright
+        else
+          echo "MIT License" > debian-package/usr/share/doc/${PACKAGE_NAME}/copyright
+          echo "Copyright (c) 2025 Bolt C++ Team" >> debian-package/usr/share/doc/${PACKAGE_NAME}/copyright
+        fi
+        
+        # Copy icon if exists
+        if [ -f generated-icon.png ]; then
+          cp generated-icon.png debian-package/usr/share/pixmaps/bolt-cppml.png
+        fi
+        
+        # Set permissions
+        chmod 755 debian-package/DEBIAN
+        
+        # Verify binary exists before setting permissions
+        if [ ! -f debian-package/usr/bin/bolt ]; then
+          echo "Error: bolt binary not found in build output"
+          echo "Build may have failed. Checking build directory..."
+          ls -la build/
+          exit 1
+        fi
+        chmod 755 debian-package/usr/bin/bolt
+        if [ -f debian-package/usr/lib/libbolt_lib.so ]; then
+          chmod 644 debian-package/usr/lib/libbolt_lib.so*
+        fi
+        if ls debian-package/usr/lib/libggml*.so* 1> /dev/null 2>&1; then
+          chmod 644 debian-package/usr/lib/libggml*.so*
+        fi
+        
+        # Build .deb package
+        dpkg-deb --build debian-package ${PACKAGE_NAME}_${VERSION}_${ARCH}.deb
+    
+    - name: Upload Debian package
+      uses: actions/upload-artifact@v4
+      with:
+        name: debian-package-ubuntu-${{ matrix.ubuntu_version }}
+        path: '*.deb'
+    
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: '*.deb'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

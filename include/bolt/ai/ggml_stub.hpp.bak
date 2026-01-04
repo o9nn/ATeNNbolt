@@ -1,0 +1,229 @@
+
+#ifndef GGML_HPP
+#define GGML_HPP
+
+#include <vector>
+#include <memory>
+#include <string>
+#include <cstddef>
+#include <cstdint>
+#include "bolt/core/thread_safety.hpp"
+
+namespace bolt {
+
+// GGML compatibility types
+enum ggml_type {
+    GGML_TYPE_F32 = 0,
+    GGML_TYPE_F16 = 1,
+    GGML_TYPE_Q4_0 = 2,
+    GGML_TYPE_Q4_1 = 3
+};
+
+struct ggml_init_params {
+    size_t mem_size;
+};
+
+struct ggml_tensor {
+    std::vector<float> data;
+    std::vector<int64_t> ne;  // number of elements in each dimension
+    ggml_type type;
+    size_t offset;
+    void* ptr_data;
+    
+    ggml_tensor(ggml_type type_, int64_t ne0, int64_t ne1 = 1, int64_t ne2 = 1, int64_t ne3 = 1) 
+        : type(type_), offset(0) {
+        ne = {ne0, ne1, ne2, ne3};
+        size_t size = ne0 * ne1 * ne2 * ne3;
+        data.resize(size);
+        ptr_data = data.data();
+    }
+};
+
+struct ggml_context {
+    std::vector<std::unique_ptr<ggml_tensor>> tensors;
+    size_t mem_size;
+    
+    ggml_context(size_t size) : mem_size(size) {}
+};
+
+struct ggml_cgraph {
+    std::vector<ggml_tensor*> nodes;
+};
+
+// GGML compatibility functions
+inline ggml_context* ggml_init(const ggml_init_params& params) {
+    return new ggml_context(params.mem_size);
+}
+
+inline void ggml_free(ggml_context* ctx) {
+    delete ctx;
+}
+
+inline ggml_tensor* ggml_new_tensor_1d(ggml_context* ctx, ggml_type type, int64_t ne0) {
+    auto tensor = std::make_unique<ggml_tensor>(type, ne0);
+    auto* ptr = tensor.get();
+    ctx->tensors.push_back(std::move(tensor));
+    return ptr;
+}
+
+inline ggml_tensor* ggml_new_tensor_2d(ggml_context* ctx, ggml_type type, int64_t ne0, int64_t ne1) {
+    auto tensor = std::make_unique<ggml_tensor>(type, ne0, ne1);
+    auto* ptr = tensor.get();
+    ctx->tensors.push_back(std::move(tensor));
+    return ptr;
+}
+
+inline ggml_cgraph* ggml_new_graph(ggml_context* ctx) {
+    return new ggml_cgraph();
+}
+
+inline size_t ggml_nbytes(const ggml_tensor* tensor) {
+    size_t elements = 1;
+    for (auto ne : tensor->ne) {
+        elements *= ne;
+    }
+    return elements * sizeof(float);
+}
+
+// Mathematical operations (simplified implementations)
+inline ggml_tensor* ggml_mul_mat(ggml_context* ctx, ggml_tensor* a, ggml_tensor* b) {
+    auto result = std::make_unique<ggml_tensor>(GGML_TYPE_F32, a->ne[0], b->ne[1]);
+    auto* ptr = result.get();
+    ctx->tensors.push_back(std::move(result));
+    return ptr;
+}
+
+inline ggml_tensor* ggml_add(ggml_context* ctx, ggml_tensor* a, ggml_tensor* b) {
+    auto result = std::make_unique<ggml_tensor>(GGML_TYPE_F32, a->ne[0], a->ne[1]);
+    auto* ptr = result.get();
+    ctx->tensors.push_back(std::move(result));
+    return ptr;
+}
+
+inline ggml_tensor* ggml_repeat(ggml_context* ctx, ggml_tensor* a, ggml_tensor* b) {
+    auto result = std::make_unique<ggml_tensor>(GGML_TYPE_F32, b->ne[0], b->ne[1]);
+    auto* ptr = result.get();
+    ctx->tensors.push_back(std::move(result));
+    return ptr;
+}
+
+inline ggml_tensor* ggml_scale_inplace(ggml_context* ctx, ggml_tensor* a, float s) {
+    return a;  // In-place operation
+}
+
+inline ggml_tensor* ggml_soft_max_inplace(ggml_context* ctx, ggml_tensor* a) {
+    return a;  // In-place operation
+}
+
+inline ggml_tensor* ggml_gelu(ggml_context* ctx, ggml_tensor* a) {
+    auto result = std::make_unique<ggml_tensor>(GGML_TYPE_F32, a->ne[0], a->ne[1]);
+    auto* ptr = result.get();
+    ctx->tensors.push_back(std::move(result));
+    return ptr;
+}
+
+inline ggml_tensor* ggml_norm(ggml_context* ctx, ggml_tensor* a, ggml_tensor* b) {
+    auto result = std::make_unique<ggml_tensor>(GGML_TYPE_F32, a->ne[0], a->ne[1]);
+    auto* ptr = result.get();
+    ctx->tensors.push_back(std::move(result));
+    return ptr;
+}
+
+inline ggml_tensor* ggml_rwkv_att(ggml_context* ctx, ggml_tensor* x, ggml_tensor* state_a, ggml_tensor* state_b) {
+    auto result = std::make_unique<ggml_tensor>(GGML_TYPE_F32, x->ne[0], x->ne[1]);
+    auto* ptr = result.get();
+    ctx->tensors.push_back(std::move(result));
+    return ptr;
+}
+
+inline void ggml_build_forward_expand(ggml_cgraph* gf, ggml_tensor* tensor) {
+    gf->nodes.push_back(tensor);
+}
+
+inline void ggml_graph_compute_with_ctx(ggml_context* ctx, ggml_cgraph* gf, int n_threads) {
+    // Simplified computation - in a real implementation this would execute the graph
+}
+
+class GGMLTensor {
+private:
+    std::vector<float> data_;
+    std::vector<int> shape_;
+
+public:
+    GGMLTensor(const std::vector<int>& shape) : shape_(shape) {
+        int size = 1;
+        for (int dim : shape) {
+            size *= dim;
+        }
+        data_.resize(size);
+    }
+
+    float* data() { return data_.data(); }
+    const float* data() const { return data_.data(); }
+    const std::vector<int>& shape() const { return shape_; }
+};
+
+class GGMLContext {
+private:
+    ThreadSafe<std::vector<std::unique_ptr<GGMLTensor>>> tensors_;
+    ggml_context* ctx_;
+
+public:
+    GGMLContext(size_t mem_size) {
+        ggml_init_params params = {mem_size};
+        ctx_ = ggml_init(params);
+    }
+    
+    ~GGMLContext() {
+        if (ctx_) ggml_free(ctx_);
+    }
+    
+    ggml_context* get() { return ctx_; }
+
+    GGMLTensor* createTensor(const std::vector<int>& shape) {
+        return tensors_.write([&](auto& tensors) {
+            tensors.push_back(std::make_unique<GGMLTensor>(shape));
+            return tensors.back().get();
+        });
+    }
+
+    void computeForward(GGMLTensor* input, GGMLTensor* output) {
+        // Implement forward pass computation
+        const float* in_data = input->data();
+        float* out_data = output->data();
+        
+        // Simple linear forward pass example
+        for (size_t i = 0; i < input->shape()[0]; i++) {
+            out_data[i] = in_data[i];
+        }
+    }
+};
+
+class GGMLModel {
+private:
+    GGMLContext context_;
+    std::string model_path_;
+
+public:
+    GGMLModel(const std::string& path) : model_path_(path), context_(4096 * sizeof(float)) {}
+
+    bool loadModel() {
+        // Implement model loading logic
+        return true;
+    }
+
+    std::vector<float> predict(const std::vector<float>& input) {
+        auto* input_tensor = context_.createTensor({static_cast<int>(input.size())});
+        auto* output_tensor = context_.createTensor({static_cast<int>(input.size())});
+        
+        std::copy(input.begin(), input.end(), input_tensor->data());
+        context_.computeForward(input_tensor, output_tensor);
+        
+        return std::vector<float>(output_tensor->data(), 
+                                output_tensor->data() + input.size());
+    }
+};
+
+} // namespace bolt
+
+#endif

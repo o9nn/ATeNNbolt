@@ -1,0 +1,729 @@
+# Release Build & Distribution Workflow
+# Builds release binaries and packages for all platforms
+name: Release Build
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g., 1.0.0)'
+        required: true
+        default: '1.0.0'
+      prerelease:
+        description: 'Mark as pre-release'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  BUILD_TYPE: Release
+  VERSION: ${{ github.event.inputs.version || github.ref_name }}
+
+jobs:
+  # ============================================
+  # Version Preparation
+  # ============================================
+  prepare:
+    name: Prepare Release
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      is_prerelease: ${{ steps.version.outputs.is_prerelease }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Determine version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+            IS_PRERELEASE="${{ github.event.inputs.prerelease }}"
+          else
+            VERSION="${GITHUB_REF_NAME#v}"
+            if [[ "$VERSION" == *"-"* ]]; then
+              IS_PRERELEASE="true"
+            else
+              IS_PRERELEASE="false"
+            fi
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "is_prerelease=$IS_PRERELEASE" >> $GITHUB_OUTPUT
+          echo "Release version: $VERSION (prerelease: $IS_PRERELEASE)"
+
+  # ============================================
+  # Linux Release Builds
+  # ============================================
+  linux-release:
+    name: Linux Release (${{ matrix.arch }})
+    runs-on: ubuntu-latest
+    needs: prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x64]
+        include:
+          - arch: x64
+            triplet: x64-linux
+            cc: gcc-13
+            cxx: g++-13
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential ninja-build pkg-config \
+            libcurl4-openssl-dev libjsoncpp-dev libglfw3-dev \
+            libgl1-mesa-dev libglu1-mesa-dev libssl-dev zlib1g-dev \
+            gcc-13 g++-13 \
+            patchelf chrpath
+
+      - name: Setup vcpkg
+        run: |
+          git clone https://github.com/microsoft/vcpkg.git ~/vcpkg
+          ~/vcpkg/bootstrap-vcpkg.sh
+
+      - name: Configure CMake
+        run: |
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER=${{ matrix.cc }} \
+            -DCMAKE_CXX_COMPILER=${{ matrix.cxx }} \
+            -DCMAKE_TOOLCHAIN_FILE=$HOME/vcpkg/scripts/buildsystems/vcpkg.cmake \
+            -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} \
+            -DCMAKE_INSTALL_PREFIX=/usr \
+            -DBUILD_SHARED_LIBS=OFF
+
+      - name: Build
+        run: cmake --build build --config Release -j $(nproc)
+
+      - name: Run tests
+        working-directory: build
+        run: |
+          export LD_LIBRARY_PATH="${PWD}:$LD_LIBRARY_PATH"
+          ctest --output-on-failure --timeout 120 || true
+
+      - name: Create release package
+        run: |
+          mkdir -p release/bolt-${{ needs.prepare.outputs.version }}-linux-${{ matrix.arch }}
+          cp build/bolt release/bolt-${{ needs.prepare.outputs.version }}-linux-${{ matrix.arch }}/
+          cp build/bolt_lib* release/bolt-${{ needs.prepare.outputs.version }}-linux-${{ matrix.arch }}/ 2>/dev/null || true
+          cp -r build/demo_* release/bolt-${{ needs.prepare.outputs.version }}-linux-${{ matrix.arch }}/ 2>/dev/null || true
+
+          # Copy documentation
+          cp README.md LICENSE* release/bolt-${{ needs.prepare.outputs.version }}-linux-${{ matrix.arch }}/ 2>/dev/null || true
+
+          # Create tarball
+          cd release
+          tar -czvf bolt-${{ needs.prepare.outputs.version }}-linux-${{ matrix.arch }}.tar.gz \
+            bolt-${{ needs.prepare.outputs.version }}-linux-${{ matrix.arch }}
+
+          # Create checksum
+          sha256sum bolt-${{ needs.prepare.outputs.version }}-linux-${{ matrix.arch }}.tar.gz > \
+            bolt-${{ needs.prepare.outputs.version }}-linux-${{ matrix.arch }}.tar.gz.sha256
+
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bolt-linux-${{ matrix.arch }}-release
+          path: |
+            release/bolt-${{ needs.prepare.outputs.version }}-linux-${{ matrix.arch }}.tar.gz
+            release/bolt-${{ needs.prepare.outputs.version }}-linux-${{ matrix.arch }}.tar.gz.sha256
+          retention-days: 30
+
+  # ============================================
+  # Linux Package Builds (DEB, RPM)
+  # ============================================
+  linux-packages:
+    name: Linux Packages
+    runs-on: ubuntu-latest
+    needs: [prepare, linux-release]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+
+      - name: Install packaging dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential ninja-build pkg-config \
+            libcurl4-openssl-dev libjsoncpp-dev libglfw3-dev \
+            libgl1-mesa-dev libssl-dev zlib1g-dev \
+            gcc-13 g++-13 \
+            dpkg-dev debhelper fakeroot rpm rpmlint
+
+      - name: Configure and Build
+        run: |
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER=gcc-13 \
+            -DCMAKE_CXX_COMPILER=g++-13 \
+            -DCMAKE_INSTALL_PREFIX=/usr \
+            -DBUILD_SHARED_LIBS=OFF
+          cmake --build build -j $(nproc)
+
+      - name: Create DEB package
+        run: |
+          VERSION="${{ needs.prepare.outputs.version }}"
+          PKGDIR="bolt_${VERSION}_amd64"
+
+          mkdir -p "$PKGDIR/DEBIAN"
+          mkdir -p "$PKGDIR/usr/bin"
+          mkdir -p "$PKGDIR/usr/lib"
+          mkdir -p "$PKGDIR/usr/share/doc/bolt"
+          mkdir -p "$PKGDIR/usr/share/applications"
+
+          # Copy binaries
+          cp build/bolt "$PKGDIR/usr/bin/"
+          cp build/bolt_lib* "$PKGDIR/usr/lib/" 2>/dev/null || true
+
+          # Create control file
+          cat > "$PKGDIR/DEBIAN/control" << EOF
+          Package: bolt
+          Version: ${VERSION}
+          Section: devel
+          Priority: optional
+          Architecture: amd64
+          Depends: libc6 (>= 2.31), libstdc++6 (>= 10), libcurl4, libssl3, zlib1g
+          Maintainer: Bolt Development Team <bolt@example.com>
+          Description: Bolt C++ ML IDE
+           A modern C++ implementation of the Bolt IDE core components
+           with AI integration, LSP support, and real-time collaborative features.
+          EOF
+
+          # Build package
+          dpkg-deb --build "$PKGDIR"
+          mv "${PKGDIR}.deb" "bolt_${VERSION}_amd64.deb"
+
+          # Verify package
+          dpkg -I "bolt_${VERSION}_amd64.deb"
+
+      - name: Create RPM package
+        run: |
+          VERSION="${{ needs.prepare.outputs.version }}"
+
+          mkdir -p rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+
+          # Create tarball for RPM
+          mkdir -p bolt-${VERSION}
+          cp -r build/bolt bolt-${VERSION}/
+          cp build/bolt_lib* bolt-${VERSION}/ 2>/dev/null || true
+          tar -czvf rpmbuild/SOURCES/bolt-${VERSION}.tar.gz bolt-${VERSION}
+
+          # Create spec file
+          cat > rpmbuild/SPECS/bolt.spec << 'EOF'
+          Name:           bolt
+          Version:        ${{ needs.prepare.outputs.version }}
+          Release:        1%{?dist}
+          Summary:        Bolt C++ ML IDE
+
+          License:        MIT
+          Source0:        bolt-%{version}.tar.gz
+
+          BuildRequires:  gcc-c++, cmake, ninja-build
+          Requires:       libcurl, openssl, zlib
+
+          %description
+          A modern C++ implementation of the Bolt IDE core components
+          with AI integration, LSP support, and real-time collaborative features.
+
+          %prep
+          %setup -q
+
+          %install
+          mkdir -p %{buildroot}/usr/bin
+          cp bolt %{buildroot}/usr/bin/
+
+          %files
+          /usr/bin/bolt
+
+          %changelog
+          * $(date +"%a %b %d %Y") Bolt Team <bolt@example.com> - ${{ needs.prepare.outputs.version }}-1
+          - Initial release
+          EOF
+
+          # Build RPM
+          rpmbuild --define "_topdir $(pwd)/rpmbuild" -bb rpmbuild/SPECS/bolt.spec || true
+
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: bolt-linux-packages
+          path: |
+            bolt_*.deb
+            rpmbuild/RPMS/**/*.rpm
+          retention-days: 30
+          if-no-files-found: warn
+
+  # ============================================
+  # Windows Release Builds
+  # ============================================
+  windows-release:
+    name: Windows Release (${{ matrix.compiler }})
+    runs-on: windows-latest
+    needs: prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler: [msvc]
+        include:
+          - compiler: msvc
+            generator: "Visual Studio 17 2022"
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Setup vcpkg
+        run: |
+          git clone https://github.com/microsoft/vcpkg.git C:\vcpkg
+          C:\vcpkg\bootstrap-vcpkg.bat
+
+      - name: Configure CMake
+        run: |
+          cmake -B build -G "${{ matrix.generator }}" -A x64 `
+            -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake `
+            -DVCPKG_TARGET_TRIPLET=x64-windows `
+            -DBUILD_SHARED_LIBS=OFF
+
+      - name: Build
+        run: cmake --build build --config Release -j $env:NUMBER_OF_PROCESSORS
+
+      - name: Run tests
+        working-directory: build
+        run: ctest --build-config Release --output-on-failure --timeout 120
+        continue-on-error: true
+
+      - name: Create release package
+        shell: powershell
+        run: |
+          $VERSION = "${{ needs.prepare.outputs.version }}"
+          $PKGDIR = "bolt-$VERSION-windows-x64"
+
+          New-Item -ItemType Directory -Force -Path $PKGDIR
+
+          # Copy binaries
+          Copy-Item -Path "build\Release\bolt.exe" -Destination $PKGDIR -ErrorAction SilentlyContinue
+          Copy-Item -Path "build\Release\bolt*.dll" -Destination $PKGDIR -ErrorAction SilentlyContinue
+          Copy-Item -Path "build\Release\demo_*.exe" -Destination $PKGDIR -ErrorAction SilentlyContinue
+
+          # Copy dependencies from vcpkg
+          Get-ChildItem -Path "C:\vcpkg\installed\x64-windows\bin\*.dll" | Copy-Item -Destination $PKGDIR -ErrorAction SilentlyContinue
+
+          # Copy documentation
+          Copy-Item -Path "README.md" -Destination $PKGDIR -ErrorAction SilentlyContinue
+
+          # Create ZIP
+          Compress-Archive -Path $PKGDIR -DestinationPath "bolt-$VERSION-windows-x64.zip"
+
+          # Create checksum
+          $hash = Get-FileHash "bolt-$VERSION-windows-x64.zip" -Algorithm SHA256
+          "$($hash.Hash)  bolt-$VERSION-windows-x64.zip" | Out-File -FilePath "bolt-$VERSION-windows-x64.zip.sha256" -Encoding ASCII
+
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bolt-windows-x64-release
+          path: |
+            bolt-${{ needs.prepare.outputs.version }}-windows-x64.zip
+            bolt-${{ needs.prepare.outputs.version }}-windows-x64.zip.sha256
+          retention-days: 30
+
+  # ============================================
+  # Windows Installer (MSI)
+  # ============================================
+  windows-installer:
+    name: Windows Installer
+    runs-on: windows-latest
+    needs: [prepare, windows-release]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Windows build
+        uses: actions/download-artifact@v4
+        with:
+          name: bolt-windows-x64-release
+          path: release/
+
+      - name: Extract release
+        shell: powershell
+        run: |
+          Expand-Archive -Path "release\bolt-${{ needs.prepare.outputs.version }}-windows-x64.zip" -DestinationPath "extracted\"
+
+      - name: Install WiX Toolset
+        run: |
+          choco install wixtoolset -y
+
+      - name: Create WiX source
+        shell: powershell
+        run: |
+          $VERSION = "${{ needs.prepare.outputs.version }}"
+
+          @"
+          <?xml version="1.0" encoding="UTF-8"?>
+          <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+            <Product Id="*" Name="Bolt C++ ML IDE" Language="1033"
+                     Version="$VERSION" Manufacturer="Bolt Team"
+                     UpgradeCode="12345678-1234-1234-1234-123456789012">
+              <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"/>
+              <MajorUpgrade DowngradeErrorMessage="A newer version is already installed."/>
+              <MediaTemplate EmbedCab="yes"/>
+
+              <Feature Id="ProductFeature" Title="Bolt" Level="1">
+                <ComponentGroupRef Id="ProductComponents"/>
+              </Feature>
+
+              <Directory Id="TARGETDIR" Name="SourceDir">
+                <Directory Id="ProgramFiles64Folder">
+                  <Directory Id="INSTALLFOLDER" Name="Bolt"/>
+                </Directory>
+              </Directory>
+
+              <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+                <Component Id="MainExecutable" Guid="*">
+                  <File Id="BoltExe" Source="extracted\bolt-$VERSION-windows-x64\bolt.exe" KeyPath="yes"/>
+                </Component>
+              </ComponentGroup>
+            </Product>
+          </Wix>
+          "@ | Out-File -FilePath "bolt.wxs" -Encoding UTF8
+
+      - name: Build MSI
+        run: |
+          & "C:\Program Files (x86)\WiX Toolset v3.11\bin\candle.exe" bolt.wxs
+          & "C:\Program Files (x86)\WiX Toolset v3.11\bin\light.exe" -out bolt-${{ needs.prepare.outputs.version }}-windows-x64.msi bolt.wixobj
+        continue-on-error: true
+
+      - name: Upload MSI
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: bolt-windows-msi
+          path: bolt-*.msi
+          retention-days: 30
+          if-no-files-found: warn
+
+  # ============================================
+  # macOS Release Builds
+  # ============================================
+  macos-release:
+    name: macOS Release (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    needs: prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-13
+            arch: x64
+            triplet: x64-osx
+          - runner: macos-14
+            arch: arm64
+            triplet: arm64-osx
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+
+      - name: Install dependencies
+        run: |
+          brew install ninja pkg-config curl jsoncpp glfw openssl@3 zlib
+
+      - name: Setup vcpkg
+        run: |
+          git clone https://github.com/microsoft/vcpkg.git ~/vcpkg
+          ~/vcpkg/bootstrap-vcpkg.sh
+
+      - name: Configure CMake
+        run: |
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_TOOLCHAIN_FILE=$HOME/vcpkg/scripts/buildsystems/vcpkg.cmake \
+            -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} \
+            -DBUILD_SHARED_LIBS=OFF
+
+      - name: Build
+        run: cmake --build build --config Release -j $(sysctl -n hw.ncpu)
+
+      - name: Run tests
+        working-directory: build
+        run: ctest --output-on-failure --timeout 120
+        continue-on-error: true
+
+      - name: Create release package
+        run: |
+          VERSION="${{ needs.prepare.outputs.version }}"
+          PKGDIR="bolt-${VERSION}-macos-${{ matrix.arch }}"
+
+          mkdir -p "$PKGDIR"
+          cp build/bolt "$PKGDIR/"
+          cp build/bolt_lib* "$PKGDIR/" 2>/dev/null || true
+          cp build/demo_* "$PKGDIR/" 2>/dev/null || true
+          cp README.md "$PKGDIR/" 2>/dev/null || true
+
+          # Create tarball
+          tar -czvf "bolt-${VERSION}-macos-${{ matrix.arch }}.tar.gz" "$PKGDIR"
+
+          # Create checksum
+          shasum -a 256 "bolt-${VERSION}-macos-${{ matrix.arch }}.tar.gz" > \
+            "bolt-${VERSION}-macos-${{ matrix.arch }}.tar.gz.sha256"
+
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bolt-macos-${{ matrix.arch }}-release
+          path: |
+            bolt-${{ needs.prepare.outputs.version }}-macos-${{ matrix.arch }}.tar.gz
+            bolt-${{ needs.prepare.outputs.version }}-macos-${{ matrix.arch }}.tar.gz.sha256
+          retention-days: 30
+
+  # ============================================
+  # macOS Universal Binary
+  # ============================================
+  macos-universal:
+    name: macOS Universal Binary
+    runs-on: macos-14
+    needs: [prepare, macos-release]
+
+    steps:
+      - name: Download x64 build
+        uses: actions/download-artifact@v4
+        with:
+          name: bolt-macos-x64-release
+          path: x64/
+
+      - name: Download arm64 build
+        uses: actions/download-artifact@v4
+        with:
+          name: bolt-macos-arm64-release
+          path: arm64/
+
+      - name: Create universal binary
+        run: |
+          VERSION="${{ needs.prepare.outputs.version }}"
+
+          # Extract both architectures
+          tar -xzf "x64/bolt-${VERSION}-macos-x64.tar.gz"
+          mv "bolt-${VERSION}-macos-x64" x64-bin
+          tar -xzf "arm64/bolt-${VERSION}-macos-arm64.tar.gz"
+          mv "bolt-${VERSION}-macos-arm64" arm64-bin
+
+          # Create universal binary
+          mkdir -p "bolt-${VERSION}-macos-universal"
+          lipo -create -output "bolt-${VERSION}-macos-universal/bolt" \
+            x64-bin/bolt arm64-bin/bolt
+
+          # Verify
+          file "bolt-${VERSION}-macos-universal/bolt"
+
+          # Package
+          tar -czvf "bolt-${VERSION}-macos-universal.tar.gz" "bolt-${VERSION}-macos-universal"
+          shasum -a 256 "bolt-${VERSION}-macos-universal.tar.gz" > \
+            "bolt-${VERSION}-macos-universal.tar.gz.sha256"
+
+      - name: Upload universal binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: bolt-macos-universal-release
+          path: |
+            bolt-${{ needs.prepare.outputs.version }}-macos-universal.tar.gz
+            bolt-${{ needs.prepare.outputs.version }}-macos-universal.tar.gz.sha256
+          retention-days: 30
+
+  # ============================================
+  # macOS DMG Installer
+  # ============================================
+  macos-dmg:
+    name: macOS DMG Installer
+    runs-on: macos-14
+    needs: [prepare, macos-universal]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download universal binary
+        uses: actions/download-artifact@v4
+        with:
+          name: bolt-macos-universal-release
+          path: release/
+
+      - name: Create DMG
+        run: |
+          VERSION="${{ needs.prepare.outputs.version }}"
+
+          # Extract universal binary
+          tar -xzf "release/bolt-${VERSION}-macos-universal.tar.gz"
+
+          # Create app bundle structure
+          mkdir -p "Bolt.app/Contents/MacOS"
+          mkdir -p "Bolt.app/Contents/Resources"
+
+          cp "bolt-${VERSION}-macos-universal/bolt" "Bolt.app/Contents/MacOS/"
+
+          # Create Info.plist
+          cat > "Bolt.app/Contents/Info.plist" << EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>CFBundleExecutable</key>
+            <string>bolt</string>
+            <key>CFBundleIdentifier</key>
+            <string>com.bolt.ide</string>
+            <key>CFBundleName</key>
+            <string>Bolt</string>
+            <key>CFBundleVersion</key>
+            <string>${VERSION}</string>
+            <key>CFBundleShortVersionString</key>
+            <string>${VERSION}</string>
+            <key>CFBundlePackageType</key>
+            <string>APPL</string>
+            <key>LSMinimumSystemVersion</key>
+            <string>11.0</string>
+          </dict>
+          </plist>
+          EOF
+
+          # Create DMG staging
+          mkdir -p dmg_staging
+          mv "Bolt.app" dmg_staging/
+          ln -s /Applications dmg_staging/Applications
+
+          # Create DMG
+          hdiutil create -volname "Bolt $VERSION" \
+            -srcfolder dmg_staging \
+            -ov -format UDZO \
+            "bolt-${VERSION}-macos.dmg"
+
+          # Create checksum
+          shasum -a 256 "bolt-${VERSION}-macos.dmg" > "bolt-${VERSION}-macos.dmg.sha256"
+
+      - name: Upload DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: bolt-macos-dmg
+          path: |
+            bolt-${{ needs.prepare.outputs.version }}-macos.dmg
+            bolt-${{ needs.prepare.outputs.version }}-macos.dmg.sha256
+          retention-days: 30
+
+  # ============================================
+  # Create GitHub Release
+  # ============================================
+  create-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs:
+      - prepare
+      - linux-release
+      - linux-packages
+      - windows-release
+      - windows-installer
+      - macos-release
+      - macos-universal
+      - macos-dmg
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Prepare release files
+        run: |
+          mkdir -p release-files
+          find artifacts -type f \( -name "*.tar.gz" -o -name "*.zip" -o -name "*.deb" \
+            -o -name "*.rpm" -o -name "*.msi" -o -name "*.dmg" -o -name "*.sha256" \) \
+            -exec cp {} release-files/ \;
+          ls -la release-files/
+
+      - name: Generate release notes
+        run: |
+          VERSION="${{ needs.prepare.outputs.version }}"
+
+          cat > release-notes.md << EOF
+          # Bolt C++ ML IDE v${VERSION}
+
+          ## Downloads
+
+          ### Linux
+          - \`bolt-${VERSION}-linux-x64.tar.gz\` - Linux x64 binary
+          - \`bolt_${VERSION}_amd64.deb\` - Debian/Ubuntu package
+
+          ### Windows
+          - \`bolt-${VERSION}-windows-x64.zip\` - Windows x64 binary
+          - \`bolt-${VERSION}-windows-x64.msi\` - Windows installer
+
+          ### macOS
+          - \`bolt-${VERSION}-macos-universal.tar.gz\` - macOS Universal binary (Intel + Apple Silicon)
+          - \`bolt-${VERSION}-macos.dmg\` - macOS installer
+
+          ## Checksums
+          SHA256 checksums are provided for all downloads in \`.sha256\` files.
+
+          ## Installation
+
+          ### Linux (DEB)
+          \`\`\`bash
+          sudo dpkg -i bolt_${VERSION}_amd64.deb
+          \`\`\`
+
+          ### macOS
+          1. Download the DMG file
+          2. Open the DMG and drag Bolt to Applications
+
+          ### Windows
+          Run the MSI installer or extract the ZIP to your preferred location.
+
+          ## What's Changed
+          See the full changelog for details.
+          EOF
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Bolt v${{ needs.prepare.outputs.version }}
+          body_path: release-notes.md
+          prerelease: ${{ needs.prepare.outputs.is_prerelease }}
+          files: release-files/*
+          fail_on_unmatched_files: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ============================================
+  # Notify on completion
+  # ============================================
+  notify:
+    name: Notify
+    runs-on: ubuntu-latest
+    needs: [create-release]
+    if: always()
+    steps:
+      - name: Release Summary
+        run: |
+          echo "## Release Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Version: ${{ needs.prepare.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "Pre-release: ${{ needs.prepare.outputs.is_prerelease }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All release artifacts have been uploaded." >> $GITHUB_STEP_SUMMARY

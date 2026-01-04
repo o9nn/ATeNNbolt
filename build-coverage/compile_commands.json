@@ -1,0 +1,836 @@
+[
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/core/bolt.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/bolt.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/bolt.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/core/bolt.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/core/memory_manager.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/memory_manager.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/memory_manager.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/core/memory_manager.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/core/memory_pool.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/memory_pool.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/memory_pool.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/core/memory_pool.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/core/message_handler.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/message_handler.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/message_handler.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/core/message_handler.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/core/chat_store.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/chat_store.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/chat_store.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/core/chat_store.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/core/editor_store.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/editor_store.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/editor_store.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/core/editor_store.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/core/workbench_store.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/workbench_store.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/workbench_store.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/core/workbench_store.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/core/plugin_system.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/plugin_system.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/plugin_system.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/core/plugin_system.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/core/logging.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/logging.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/logging.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/core/logging.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/core/performance_profiler.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/performance_profiler.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/performance_profiler.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/core/performance_profiler.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/core/benchmark_suite.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/benchmark_suite.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/benchmark_suite.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/core/benchmark_suite.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/core/code_analyzer.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/code_analyzer.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/core/code_analyzer.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/core/code_analyzer.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/utils/string_utils.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/utils/string_utils.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/utils/string_utils.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/utils/string_utils.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/code_folding.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/code_folding.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/code_folding.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/code_folding.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/code_folding_detector.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/code_folding_detector.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/code_folding_detector.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/code_folding_detector.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/code_folding_manager.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/code_folding_manager.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/code_folding_manager.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/code_folding_manager.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/code_folding_visibility.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/code_folding_visibility.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/code_folding_visibility.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/code_folding_visibility.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/code_folding_ui.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/code_folding_ui.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/code_folding_ui.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/code_folding_ui.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/integrated_editor.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/integrated_editor.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/integrated_editor.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/integrated_editor.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/code_completion.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/code_completion.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/code_completion.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/code_completion.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/cursor_manager.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/cursor_manager.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/cursor_manager.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/cursor_manager.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/keyboard_shortcuts.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/keyboard_shortcuts.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/keyboard_shortcuts.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/keyboard_shortcuts.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/file_tree_node.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/file_tree_node.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/file_tree_node.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/file_tree_node.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/file_tree_manager.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/file_tree_manager.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/file_tree_manager.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/file_tree_manager.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/file_tree_ui.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/file_tree_ui.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/file_tree_ui.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/file_tree_ui.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/split_view_manager.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/split_view_manager.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/split_view_manager.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/split_view_manager.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/editor_pane.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/editor_pane.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/editor_pane.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/editor_pane.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/minimap.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/minimap.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/minimap.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/minimap.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/minimap_renderer.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/minimap_renderer.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/minimap_renderer.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/minimap_renderer.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/minimap_ui.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/minimap_ui.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/minimap_ui.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/minimap_ui.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/theme_system.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/theme_system.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/theme_system.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/theme_system.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/tab_bar.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/tab_bar.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/tab_bar.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/tab_bar.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/debugger_interface.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/debugger_interface.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/debugger_interface.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/debugger_interface.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/editor/debugger_ui.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/debugger_ui.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/editor/debugger_ui.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/editor/debugger_ui.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/ai/ggml.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/ggml.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/ggml.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/ai/ggml.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/ai/rwkv_wrapper.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/rwkv_wrapper.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/rwkv_wrapper.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/ai/rwkv_wrapper.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/ai/direct_gguf_inference.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/direct_gguf_inference.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/direct_gguf_inference.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/ai/direct_gguf_inference.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/ai/gpu_acceleration.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/gpu_acceleration.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/gpu_acceleration.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/ai/gpu_acceleration.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/gui/bolt_gui_app.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/gui/bolt_gui_app.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/gui/bolt_gui_app.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/gui/bolt_gui_app.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/gui/widget_framework.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/gui/widget_framework.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/gui/widget_framework.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/gui/widget_framework.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/gui/widgets.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/gui/widgets.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/gui/widgets.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/gui/widgets.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/gui/widget_registration.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/gui/widget_registration.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/gui/widget_registration.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/gui/widget_registration.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/drawkern/drawkern.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/drawkern/drawkern.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/drawkern/drawkern.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/drawkern/drawkern.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/drawkern/styx_protocol.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/drawkern/styx_protocol.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/drawkern/styx_protocol.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/drawkern/styx_protocol.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/drawkern/dis_vm.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/drawkern/dis_vm.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/drawkern/dis_vm.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/drawkern/dis_vm.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/drawkern/yacc_grammar.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/drawkern/yacc_grammar.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/drawkern/yacc_grammar.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/drawkern/yacc_grammar.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/drawkern/ai_integration.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/drawkern/ai_integration.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/drawkern/ai_integration.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/drawkern/ai_integration.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/collaboration/document_operation.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/collaboration/document_operation.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/collaboration/document_operation.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/collaboration/document_operation.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/collaboration/operational_transform.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/collaboration/operational_transform.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/collaboration/operational_transform.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/collaboration/operational_transform.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/collaboration/collaborative_session.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/collaboration/collaborative_session.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/collaboration/collaborative_session.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/collaboration/collaborative_session.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/collaboration/collaboration_protocol.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/collaboration/collaboration_protocol.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/collaboration/collaboration_protocol.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/collaboration/collaboration_protocol.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/collaboration/collaborative_editor_integration.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/collaboration/collaborative_editor_integration.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/collaboration/collaborative_editor_integration.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/collaboration/collaborative_editor_integration.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/git/git_repository.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/git/git_repository.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/git/git_repository.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/git/git_repository.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/git/git_integration.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/git/git_integration.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/git/git_integration.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/git/git_integration.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/network/websocket_server.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/network/websocket_server.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/network/websocket_server.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/network/websocket_server.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/network/connection_pool.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/network/connection_pool.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/network/connection_pool.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/network/connection_pool.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/network/message_compression.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/network/message_compression.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/network/message_compression.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/network/message_compression.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/network/network_buffer.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/network/network_buffer.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/network/network_buffer.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/network/network_buffer.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/network/network_metrics.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/network/network_metrics.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/network/network_metrics.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/network/network_metrics.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/ai/ai_completion_provider.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/ai_completion_provider.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/ai_completion_provider.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/ai/ai_completion_provider.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/ai/ai_config_manager.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/ai_config_manager.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/ai_config_manager.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/ai/ai_config_manager.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/ai/enhanced_ai_manager.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/enhanced_ai_manager.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/enhanced_ai_manager.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/ai/enhanced_ai_manager.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/ai/ai_code_generator.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/ai_code_generator.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/ai_code_generator.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/ai/ai_code_generator.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/ai/ai_refactoring_engine.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/ai_refactoring_engine.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/ai_refactoring_engine.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/ai/ai_refactoring_engine.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -Dbolt_lib_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_lib.dir/src/bolt/ai/ai_http_client.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/ai_http_client.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/ai/ai_http_client.cpp",
+  "output": "CMakeFiles/bolt_lib.dir/src/bolt/ai/ai_http_client.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt.dir/src/bolt/main.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/main.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/main.cpp",
+  "output": "CMakeFiles/bolt.dir/src/bolt/main.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_drawkern.dir/demo_drawkern.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_drawkern.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_drawkern.cpp",
+  "output": "CMakeFiles/demo_drawkern.dir/demo_drawkern.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_drawkern_full.dir/demo_drawkern_full.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_drawkern_full.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_drawkern_full.cpp",
+  "output": "CMakeFiles/demo_drawkern_full.dir/demo_drawkern_full.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_drawkern_complete.dir/demo_drawkern_complete.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_drawkern_complete.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_drawkern_complete.cpp",
+  "output": "CMakeFiles/demo_drawkern_complete.dir/demo_drawkern_complete.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_ai_infrastructure.dir/demo_ai_infrastructure.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_ai_infrastructure.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_ai_infrastructure.cpp",
+  "output": "CMakeFiles/demo_ai_infrastructure.dir/demo_ai_infrastructure.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_ai_completion.dir/demo_ai_completion.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_ai_completion.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_ai_completion.cpp",
+  "output": "CMakeFiles/demo_ai_completion.dir/demo_ai_completion.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_advanced_ai_features.dir/demo_advanced_ai_features.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_advanced_ai_features.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_advanced_ai_features.cpp",
+  "output": "CMakeFiles/demo_advanced_ai_features.dir/demo_advanced_ai_features.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_direct_gguf.dir/demo_direct_gguf.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_direct_gguf.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_direct_gguf.cpp",
+  "output": "CMakeFiles/demo_direct_gguf.dir/demo_direct_gguf.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_gpu_acceleration.dir/demo_gpu_acceleration.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_gpu_acceleration.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_gpu_acceleration.cpp",
+  "output": "CMakeFiles/demo_gpu_acceleration.dir/demo_gpu_acceleration.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_multi_cursor.dir/demo_multi_cursor.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_multi_cursor.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_multi_cursor.cpp",
+  "output": "CMakeFiles/demo_multi_cursor.dir/demo_multi_cursor.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_split_view_basic.dir/demo_split_view_basic.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_split_view_basic.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_split_view_basic.cpp",
+  "output": "CMakeFiles/demo_split_view_basic.dir/demo_split_view_basic.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_split_view.dir/demo_split_view.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_split_view.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_split_view.cpp",
+  "output": "CMakeFiles/demo_split_view.dir/demo_split_view.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_debugger.dir/demo_debugger.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_debugger.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_debugger.cpp",
+  "output": "CMakeFiles/demo_debugger.dir/demo_debugger.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_terminal_ai.dir/bolt_terminal_ai.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/bolt_terminal_ai.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/bolt_terminal_ai.cpp",
+  "output": "CMakeFiles/bolt_terminal_ai.dir/bolt_terminal_ai.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_plugin_system.dir/demo_plugin_system.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_plugin_system.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_plugin_system.cpp",
+  "output": "CMakeFiles/demo_plugin_system.dir/demo_plugin_system.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_collaborative_editing.dir/demo_collaborative_editing.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_collaborative_editing.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_collaborative_editing.cpp",
+  "output": "CMakeFiles/demo_collaborative_editing.dir/demo_collaborative_editing.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_logging.dir/demo_logging.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_logging.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_logging.cpp",
+  "output": "CMakeFiles/demo_logging.dir/demo_logging.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/test_logging_simple.dir/test_logging_simple.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test_logging_simple.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test_logging_simple.cpp",
+  "output": "CMakeFiles/test_logging_simple.dir/test_logging_simple.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_git_integration.dir/demo_git_integration.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_git_integration.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_git_integration.cpp",
+  "output": "CMakeFiles/demo_git_integration.dir/demo_git_integration.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/test_git_integration.dir/test/test_git_integration.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_git_integration.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_git_integration.cpp",
+  "output": "CMakeFiles/test_git_integration.dir/test/test_git_integration.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/test_git_standalone.dir/test_git_standalone.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test_git_standalone.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test_git_standalone.cpp",
+  "output": "CMakeFiles/test_git_standalone.dir/test_git_standalone.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/test_git_standalone.dir/src/bolt/git/git_repository.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/src/bolt/git/git_repository.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/src/bolt/git/git_repository.cpp",
+  "output": "CMakeFiles/test_git_standalone.dir/src/bolt/git/git_repository.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_performance_profiler.dir/demo_performance_profiler.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_performance_profiler.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_performance_profiler.cpp",
+  "output": "CMakeFiles/demo_performance_profiler.dir/demo_performance_profiler.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/test_performance_profiler.dir/test_performance_profiler.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test_performance_profiler.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test_performance_profiler.cpp",
+  "output": "CMakeFiles/test_performance_profiler.dir/test_performance_profiler.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/benchmark_tool.dir/benchmark_tool.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/benchmark_tool.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/benchmark_tool.cpp",
+  "output": "CMakeFiles/benchmark_tool.dir/benchmark_tool.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_code_analyzer.dir/demo_code_analyzer.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_code_analyzer.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_code_analyzer.cpp",
+  "output": "CMakeFiles/demo_code_analyzer.dir/demo_code_analyzer.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_code_analyzer_standalone.dir/demo_code_analyzer_standalone.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_code_analyzer_standalone.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_code_analyzer_standalone.cpp",
+  "output": "CMakeFiles/demo_code_analyzer_standalone.dir/demo_code_analyzer_standalone.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_lsp_integration.dir/demo_lsp_integration.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_lsp_integration.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_lsp_integration.cpp",
+  "output": "CMakeFiles/demo_lsp_integration.dir/demo_lsp_integration.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_lsp_editor_integration.dir/demo_lsp_editor_integration.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_lsp_editor_integration.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_lsp_editor_integration.cpp",
+  "output": "CMakeFiles/demo_lsp_editor_integration.dir/demo_lsp_editor_integration.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/demo_network_optimizations.dir/demo_network_optimizations.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/demo_network_optimizations.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/demo_network_optimizations.cpp",
+  "output": "CMakeFiles/demo_network_optimizations.dir/demo_network_optimizations.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/cc -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BUILD -DGGML_COMMIT=\\\"e73a9f4\\\" -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_VERSION=\\\"0.0.3\\\" -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_base_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu11 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wshadow -Wstrict-prototypes -Wpointer-arith -Wmissing-prototypes -Werror=implicit-int -Werror=implicit-function-declaration -Wpedantic -Wcast-qual -Wno-unused-function -Wdouble-promotion -o CMakeFiles/ggml-base.dir/ggml.c.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml.c",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml.c",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-base.dir/ggml.c.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BUILD -DGGML_COMMIT=\\\"e73a9f4\\\" -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_VERSION=\\\"0.0.3\\\" -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_base_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -o CMakeFiles/ggml-base.dir/ggml.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-base.dir/ggml.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/cc -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BUILD -DGGML_COMMIT=\\\"e73a9f4\\\" -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_VERSION=\\\"0.0.3\\\" -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_base_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu11 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wshadow -Wstrict-prototypes -Wpointer-arith -Wmissing-prototypes -Werror=implicit-int -Werror=implicit-function-declaration -Wpedantic -Wcast-qual -Wno-unused-function -Wdouble-promotion -o CMakeFiles/ggml-base.dir/ggml-alloc.c.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-alloc.c",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-alloc.c",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-base.dir/ggml-alloc.c.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BUILD -DGGML_COMMIT=\\\"e73a9f4\\\" -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_VERSION=\\\"0.0.3\\\" -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_base_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -o CMakeFiles/ggml-base.dir/ggml-backend.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-backend.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-backend.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-base.dir/ggml-backend.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BUILD -DGGML_COMMIT=\\\"e73a9f4\\\" -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_VERSION=\\\"0.0.3\\\" -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_base_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -o CMakeFiles/ggml-base.dir/ggml-opt.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-opt.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-opt.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-base.dir/ggml-opt.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BUILD -DGGML_COMMIT=\\\"e73a9f4\\\" -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_VERSION=\\\"0.0.3\\\" -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_base_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -o CMakeFiles/ggml-base.dir/ggml-threading.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-threading.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-threading.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-base.dir/ggml-threading.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/cc -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BUILD -DGGML_COMMIT=\\\"e73a9f4\\\" -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_VERSION=\\\"0.0.3\\\" -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_base_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu11 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wshadow -Wstrict-prototypes -Wpointer-arith -Wmissing-prototypes -Werror=implicit-int -Werror=implicit-function-declaration -Wpedantic -Wcast-qual -Wno-unused-function -Wdouble-promotion -o CMakeFiles/ggml-base.dir/ggml-quants.c.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-quants.c",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-quants.c",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-base.dir/ggml-quants.c.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BUILD -DGGML_COMMIT=\\\"e73a9f4\\\" -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_VERSION=\\\"0.0.3\\\" -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_base_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -o CMakeFiles/ggml-base.dir/gguf.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/gguf.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/gguf.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-base.dir/gguf.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/cc -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu11 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wshadow -Wstrict-prototypes -Wpointer-arith -Wmissing-prototypes -Werror=implicit-int -Werror=implicit-function-declaration -Wpedantic -Wcast-qual -Wno-unused-function -Wdouble-promotion -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/ggml-cpu.c.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/ggml-cpu.c",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/ggml-cpu.c",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/ggml-cpu.c.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/ggml-cpu.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/ggml-cpu.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/ggml-cpu.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/ggml-cpu.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/repack.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/repack.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/repack.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/repack.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/hbm.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/hbm.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/hbm.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/hbm.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/cc -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu11 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wshadow -Wstrict-prototypes -Wpointer-arith -Wmissing-prototypes -Werror=implicit-int -Werror=implicit-function-declaration -Wpedantic -Wcast-qual -Wno-unused-function -Wdouble-promotion -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/quants.c.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/quants.c",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/quants.c",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/quants.c.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/traits.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/traits.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/traits.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/traits.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/amx/amx.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/amx/amx.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/amx/amx.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/amx/amx.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/amx/mmq.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/amx/mmq.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/amx/mmq.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/amx/mmq.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/binary-ops.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/binary-ops.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/binary-ops.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/binary-ops.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/unary-ops.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/unary-ops.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/unary-ops.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/unary-ops.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/vec.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/vec.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/vec.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/vec.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/ops.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/ops.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/ops.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/ops.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/cc -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu11 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wshadow -Wstrict-prototypes -Wpointer-arith -Wmissing-prototypes -Werror=implicit-int -Werror=implicit-function-declaration -Wpedantic -Wcast-qual -Wno-unused-function -Wdouble-promotion -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/arch/x86/quants.c.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/arch/x86/quants.c",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/arch/x86/quants.c",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/arch/x86/quants.c.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_BUILD -DGGML_BACKEND_SHARED -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU_REPACK -DGGML_USE_OPENMP -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_cpu_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/.. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/. -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -fopenmp -o CMakeFiles/ggml-cpu.dir/ggml-cpu/arch/x86/repack.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/arch/x86/repack.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-cpu/arch/x86/repack.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml-cpu.dir/ggml-cpu/arch/x86/repack.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/ggml/ggml.cpp/src",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_BUILD -DGGML_SCHED_MAX_COPIES=4 -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=600 -Dggml_EXPORTS -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++17 -fPIC -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -Wmissing-declarations -Wmissing-noreturn -Wpedantic -Wcast-qual -Wno-unused-function -Wno-array-bounds -Wextra-semi -o CMakeFiles/ggml.dir/ggml-backend-reg.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-backend-reg.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/ggml-backend-reg.cpp",
+  "output": "ggml/ggml.cpp/src/CMakeFiles/ggml.dir/ggml-backend-reg.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_basic_test.dir/basic_test.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/basic_test.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/basic_test.cpp",
+  "output": "test/CMakeFiles/bolt_basic_test.dir/basic_test.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_unit_tests.dir/test_runner.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_runner.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_runner.cpp",
+  "output": "test/CMakeFiles/bolt_unit_tests.dir/test_runner.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_unit_tests.dir/test_bolt_core.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_bolt_core.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_bolt_core.cpp",
+  "output": "test/CMakeFiles/bolt_unit_tests.dir/test_bolt_core.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_unit_tests.dir/test_error_handling.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_error_handling.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_error_handling.cpp",
+  "output": "test/CMakeFiles/bolt_unit_tests.dir/test_error_handling.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_unit_tests.dir/test_file_tree.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_file_tree.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_file_tree.cpp",
+  "output": "test/CMakeFiles/bolt_unit_tests.dir/test_file_tree.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_unit_tests.dir/test_minimap.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_minimap.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_minimap.cpp",
+  "output": "test/CMakeFiles/bolt_unit_tests.dir/test_minimap.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_unit_tests.dir/test_tab_bar.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_tab_bar.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_tab_bar.cpp",
+  "output": "test/CMakeFiles/bolt_unit_tests.dir/test_tab_bar.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_unit_tests.dir/test_ai_ggml.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_ai_ggml.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_ai_ggml.cpp",
+  "output": "test/CMakeFiles/bolt_unit_tests.dir/test_ai_ggml.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_unit_tests.dir/test_ai_models_complete.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_ai_models_complete.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_ai_models_complete.cpp",
+  "output": "test/CMakeFiles/bolt_unit_tests.dir/test_ai_models_complete.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_unit_tests.dir/test_debugger.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_debugger.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_debugger.cpp",
+  "output": "test/CMakeFiles/bolt_unit_tests.dir/test_debugger.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_unit_tests.dir/test_logging.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_logging.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_logging.cpp",
+  "output": "test/CMakeFiles/bolt_unit_tests.dir/test_logging.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_split_view_tests.dir/test_split_view.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_split_view.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_split_view.cpp",
+  "output": "test/CMakeFiles/bolt_split_view_tests.dir/test_split_view.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_multi_cursor_tests.dir/test_multi_cursor.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_multi_cursor.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_multi_cursor.cpp",
+  "output": "test/CMakeFiles/bolt_multi_cursor_tests.dir/test_multi_cursor.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_keyboard_shortcuts_tests.dir/test_keyboard_shortcuts.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_keyboard_shortcuts.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_keyboard_shortcuts.cpp",
+  "output": "test/CMakeFiles/bolt_keyboard_shortcuts_tests.dir/test_keyboard_shortcuts.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_theme_system_tests.dir/test_theme_system.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_theme_system.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_theme_system.cpp",
+  "output": "test/CMakeFiles/bolt_theme_system_tests.dir/test_theme_system.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_tab_bar_tests.dir/test_runner.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_runner.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_runner.cpp",
+  "output": "test/CMakeFiles/bolt_tab_bar_tests.dir/test_runner.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_tab_bar_tests.dir/test_tab_bar.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_tab_bar.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_tab_bar.cpp",
+  "output": "test/CMakeFiles/bolt_tab_bar_tests.dir/test_tab_bar.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_plugin_system_tests.dir/test_plugin_system.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_plugin_system.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_plugin_system.cpp",
+  "output": "test/CMakeFiles/bolt_plugin_system_tests.dir/test_plugin_system.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_integration_tests.dir/test_runner.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_runner.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_runner.cpp",
+  "output": "test/CMakeFiles/bolt_integration_tests.dir/test_runner.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_integration_tests.dir/test_integration.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_integration.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_integration.cpp",
+  "output": "test/CMakeFiles/bolt_integration_tests.dir/test_integration.cpp.o"
+},
+{
+  "directory": "/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/test",
+  "command": "/usr/bin/c++ -DBOLT_DISTRO_DEBIAN=1 -DBOLT_HAVE_FILESYSTEM=1 -DBOLT_HAVE_THREADS=1 -DBOLT_HAVE_ZLIB=1 -DBOLT_LINUX=1 -DBOLT_PLATFORM_LINUX=1 -DGGML_BACKEND_SHARED -DGGML_SHARED -DGGML_USE_CPU -D_DEFAULT_SOURCE -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L -I/home/runner/work/bolt-cppml/bolt-cppml/build-coverage/include -I/home/runner/work/bolt-cppml/bolt-cppml/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/include -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/rwkv.cpp -I/home/runner/work/bolt-cppml/bolt-cppml/ggml/ggml.cpp/src/../include  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG -march=native -o CMakeFiles/bolt_collaboration_tests.dir/test_collaboration.cpp.o -c /home/runner/work/bolt-cppml/bolt-cppml/test/test_collaboration.cpp",
+  "file": "/home/runner/work/bolt-cppml/bolt-cppml/test/test_collaboration.cpp",
+  "output": "test/CMakeFiles/bolt_collaboration_tests.dir/test_collaboration.cpp.o"
+}
+]

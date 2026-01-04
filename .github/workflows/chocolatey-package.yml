@@ -1,0 +1,143 @@
+name: Chocolatey Package Build
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-chocolatey:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up vcpkg
+      run: |
+        git clone https://github.com/microsoft/vcpkg.git vcpkg_tool
+        .\vcpkg_tool\bootstrap-vcpkg.bat
+    
+    - name: Install dependencies via vcpkg
+      run: |
+        cd $env:GITHUB_WORKSPACE
+        .\vcpkg_tool\vcpkg install --triplet=x64-windows
+    
+    - name: Build project
+      run: |
+        mkdir build
+        cd build
+        cmake -DCMAKE_TOOLCHAIN_FILE=..\vcpkg_tool\scripts\buildsystems\vcpkg.cmake `
+              -DCMAKE_BUILD_TYPE=Release `
+              -DBUILD_SHARED_LIBS=ON ..
+        cmake --build . --config Release
+    
+    - name: Create Chocolatey package
+      run: |
+        $VERSION = git describe --tags --always | ForEach-Object { $_ -replace '^v','' }
+        $PACKAGE_NAME = "bolt-cppml"
+        
+        # Create package directory structure
+        New-Item -ItemType Directory -Force -Path "choco-package\tools"
+        New-Item -ItemType Directory -Force -Path "choco-package\bin"
+        
+        # Copy binaries
+        if (-Not (Test-Path "build\Release\bolt.exe")) {
+            Write-Error "Error: bolt.exe not found in build output"
+            Write-Host "Build may have failed. Checking build directory..."
+            Get-ChildItem -Path "build\Release" -Recurse
+            exit 1
+        }
+        Copy-Item "build\Release\bolt.exe" "choco-package\bin\"
+        
+        if (Test-Path "build\Release\bolt_lib.dll") {
+            Copy-Item "build\Release\bolt_lib.dll" "choco-package\bin\"
+        }
+        
+        # Copy GGML DLLs if they exist
+        if (Test-Path "build\ggml\ggml.cpp\src\Release\ggml*.dll") {
+            Copy-Item "build\ggml\ggml.cpp\src\Release\ggml*.dll" "choco-package\bin\"
+        }
+        
+        # Create nuspec file
+        @"
+        <?xml version="1.0" encoding="utf-8"?>
+        <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+          <metadata>
+            <id>$PACKAGE_NAME</id>
+            <version>$VERSION</version>
+            <title>Bolt C++</title>
+            <authors>Bolt C++ Team</authors>
+            <projectUrl>https://github.com/cogpy/bolt-cppml</projectUrl>
+            <licenseUrl>https://github.com/cogpy/bolt-cppml/blob/main/LICENSE</licenseUrl>
+            <requireLicenseAcceptance>false</requireLicenseAcceptance>
+            <description>Modern C++ implementation of Bolt IDE with AI integration and real-time collaborative features</description>
+            <summary>Bolt C++ - AI-powered C++ IDE</summary>
+            <tags>ide cpp ai development editor</tags>
+            <copyright>Copyright 2025 Bolt C++ Team</copyright>
+            <dependencies>
+              <dependency id="vcredist140" version="14.0" />
+            </dependencies>
+          </metadata>
+          <files>
+            <file src="bin\**" target="bin" />
+            <file src="tools\**" target="tools" />
+          </files>
+        </package>
+        "@ | Out-File -FilePath "choco-package\$PACKAGE_NAME.nuspec" -Encoding UTF8
+        
+        # Create install script
+        @"
+        `$ErrorActionPreference = 'Stop'
+        `$packageName = '$PACKAGE_NAME'
+        `$toolsDir = "`$(Split-Path -parent `$MyInvocation.MyCommand.Definition)"
+        `$binDir = Join-Path `$toolsDir '..\bin'
+        
+        # Add to PATH
+        Install-ChocolateyPath `$binDir 'Machine'
+        
+        Write-Host "$PACKAGE_NAME has been installed successfully!"
+        "@ | Out-File -FilePath "choco-package\tools\chocolateyinstall.ps1" -Encoding UTF8
+        
+        # Create uninstall script
+        @"
+        `$ErrorActionPreference = 'Stop'
+        `$packageName = '$PACKAGE_NAME'
+        `$toolsDir = "`$(Split-Path -parent `$MyInvocation.MyCommand.Definition)"
+        `$binDir = Join-Path `$toolsDir '..\bin'
+        
+        # Remove from PATH
+        Uninstall-ChocolateyPath `$binDir 'Machine'
+        
+        Write-Host "$PACKAGE_NAME has been uninstalled successfully!"
+        "@ | Out-File -FilePath "choco-package\tools\chocolateyuninstall.ps1" -Encoding UTF8
+        
+        # Build package
+        cd choco-package
+        choco pack
+        
+        # Move package to root
+        Move-Item "$PACKAGE_NAME.$VERSION.nupkg" ..
+    
+    - name: Upload Chocolatey package
+      uses: actions/upload-artifact@v4
+      with:
+        name: chocolatey-package
+        path: '*.nupkg'
+    
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: '*.nupkg'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Publish to Chocolatey (optional)
+      if: startsWith(github.ref, 'refs/tags/') && env.CHOCO_API_KEY != ''
+      env:
+        CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
+      run: |
+        $VERSION = git describe --tags --always | ForEach-Object { $_ -replace '^v','' }
+        choco push "bolt-cppml.$VERSION.nupkg" --source https://push.chocolatey.org/ --api-key $env:CHOCO_API_KEY

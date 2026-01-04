@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/ggml.dir/link.d -shared -Wl,-soname,libggml.so -o libggml.so "CMakeFiles/ggml.dir/ggml-backend-reg.cpp.o"  -Wl,-rpath,"\$ORIGIN/../lib:\$ORIGIN/lib:/usr/local/lib" -ldl libggml-cpu.so libggml-base.so

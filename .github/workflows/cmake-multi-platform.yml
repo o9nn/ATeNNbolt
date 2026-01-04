@@ -1,0 +1,117 @@
+# CMake Multi-Platform Build and Test Workflow
+# Covers Linux (GCC, Clang) and Windows (MSVC) builds with comprehensive testing
+name: CMake on multiple platforms
+
+on:
+  push:
+    branches: [ "main", "develop", "feature/**" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+  workflow_dispatch:
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        build_type: [Release]
+        c_compiler: [gcc, clang, cl]
+        include:
+          - os: windows-latest
+            c_compiler: cl
+            cpp_compiler: cl
+          - os: ubuntu-latest
+            c_compiler: gcc
+            cpp_compiler: g++
+          - os: ubuntu-latest
+            c_compiler: clang
+            cpp_compiler: clang++
+        exclude:
+          - os: windows-latest
+            c_compiler: gcc
+          - os: windows-latest
+            c_compiler: clang
+          - os: ubuntu-latest
+            c_compiler: cl
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libcurl4-openssl-dev \
+          libjsoncpp-dev \
+          libglfw3-dev \
+          libgl1-mesa-dev \
+          libssl-dev \
+          zlib1g-dev \
+          pkg-config
+
+    - name: Set reusable strings
+      id: strings
+      shell: bash
+      run: |
+        echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
+
+    - name: Configure CMake
+      run: >
+        cmake -B ${{ steps.strings.outputs.build-output-dir }}
+        -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+        -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
+        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -S ${{ github.workspace }}
+
+    - name: Build
+      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
+
+    - name: Test (Linux)
+      if: runner.os == 'Linux'
+      working-directory: ${{ steps.strings.outputs.build-output-dir }}
+      run: |
+        # Set LD_LIBRARY_PATH to include all directories with shared libraries
+        # The llama.cpp libraries are built in build/bin/, not in build/ggml/ggml.cpp/src/
+        export LD_LIBRARY_PATH="${PWD}/bin:${PWD}:${PWD}/ggml/llama.cpp/src:$LD_LIBRARY_PATH"
+        echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
+        
+        # Verify shared libraries exist
+        echo "Checking for shared libraries..."
+        find . -name "*.so*" -type f 2>/dev/null | head -20
+        
+        # Run tests with detailed output
+        ctest --build-config ${{ matrix.build_type }} --output-on-failure --timeout 120
+
+    - name: Test (Windows)
+      if: runner.os == 'Windows'
+      working-directory: ${{ steps.strings.outputs.build-output-dir }}
+      run: |
+        # Add build directories to PATH for DLL discovery
+        $env:PATH = "${{ steps.strings.outputs.build-output-dir }}\bin;${{ steps.strings.outputs.build-output-dir }}\${{ matrix.build_type }};$env:PATH"
+        ctest --build-config ${{ matrix.build_type }} --output-on-failure --timeout 120
+
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-${{ matrix.os }}-${{ matrix.c_compiler }}-${{ matrix.build_type }}
+        path: ${{ steps.strings.outputs.build-output-dir }}/Testing/
+        retention-days: 7
+
+    - name: Upload build artifacts
+      if: matrix.build_type == 'Release'
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-artifacts-${{ matrix.os }}-${{ matrix.c_compiler }}
+        path: |
+          ${{ steps.strings.outputs.build-output-dir }}/bolt*
+          ${{ steps.strings.outputs.build-output-dir }}/bin/*.so*
+          ${{ steps.strings.outputs.build-output-dir }}/${{ matrix.build_type }}/bolt*
+        retention-days: 7

@@ -1,0 +1,306 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "default",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "vcpkg",
+      "inherits": "default",
+      "displayName": "Configure with vcpkg",
+      "description": "Configure with vcpkg dependencies (recommended)",
+      "toolchainFile": "/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "VCPKG_MANIFEST_INSTALL": "ON",
+        "VCPKG_MANIFEST_MODE": "ON"
+      }
+    },
+    {
+      "name": "vcpkg-ssr",
+      "inherits": "default",
+      "displayName": "Configure with local SSR vcpkg",
+      "description": "Configure with locally cloned vcpkg for SSR pipeline",
+      "toolchainFile": "${sourceDir}/ssr_deps/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "VCPKG_MANIFEST_INSTALL": "ON",
+        "VCPKG_MANIFEST_MODE": "ON"
+      }
+    },
+    {
+      "name": "vcpkg-debug",
+      "inherits": "vcpkg",
+      "displayName": "vcpkg (Debug)",
+      "description": "Debug build with vcpkg dependencies",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "conan",
+      "inherits": "default",
+      "displayName": "Configure with Conan",
+      "description": "Configure with Conan dependencies (alternative)",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "conan_toolchain.cmake"
+      }
+    },
+    {
+      "name": "system",
+      "inherits": "default",
+      "displayName": "System dependencies",
+      "description": "Use system-installed dependencies only",
+      "cacheVariables": {
+        "BOLT_USE_SYSTEM_DEPS": "ON"
+      }
+    },
+    {
+      "name": "dev",
+      "inherits": "vcpkg-debug",
+      "displayName": "Development",
+      "description": "Development configuration with all features enabled",
+      "cacheVariables": {
+        "CMAKE_VERBOSE_MAKEFILE": "ON",
+        "BOLT_ENABLE_TESTS": "ON",
+        "BOLT_ENABLE_DOCS": "ON"
+      }
+    },
+    {
+      "name": "asan",
+      "inherits": "vcpkg-debug",
+      "displayName": "AddressSanitizer",
+      "description": "Debug build with AddressSanitizer for memory error detection",
+      "cacheVariables": {
+        "ENABLE_SANITIZER_ADDRESS": "ON"
+      }
+    },
+    {
+      "name": "lsan",
+      "inherits": "vcpkg-debug",
+      "displayName": "LeakSanitizer",
+      "description": "Debug build with LeakSanitizer for memory leak detection",
+      "cacheVariables": {
+        "ENABLE_SANITIZER_LEAK": "ON"
+      }
+    },
+    {
+      "name": "ubsan",
+      "inherits": "vcpkg-debug",
+      "displayName": "UndefinedBehaviorSanitizer",
+      "description": "Debug build with UndefinedBehaviorSanitizer",
+      "cacheVariables": {
+        "ENABLE_SANITIZER_UNDEFINED_BEHAVIOR": "ON"
+      }
+    },
+    {
+      "name": "tsan",
+      "inherits": "vcpkg-debug",
+      "displayName": "ThreadSanitizer",
+      "description": "Debug build with ThreadSanitizer for data race detection",
+      "cacheVariables": {
+        "ENABLE_SANITIZER_THREAD": "ON"
+      }
+    },
+    {
+      "name": "valgrind",
+      "inherits": "vcpkg-debug",
+      "displayName": "Valgrind",
+      "description": "Debug build configured for Valgrind testing",
+      "cacheVariables": {
+        "ENABLE_VALGRIND": "ON"
+      }
+    },
+    {
+      "name": "leak-detection",
+      "inherits": "vcpkg-debug",
+      "displayName": "Comprehensive Leak Detection",
+      "description": "Debug build with both AddressSanitizer and LeakSanitizer",
+      "cacheVariables": {
+        "ENABLE_SANITIZER_ADDRESS": "ON",
+        "ENABLE_SANITIZER_LEAK": "ON"
+      }
+    },
+    {
+      "name": "linux-x64",
+      "inherits": "vcpkg-ssr",
+      "displayName": "Linux x64 (SSR)",
+      "description": "Linux x64 build with local SSR vcpkg",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-linux"
+      }
+    },
+    {
+      "name": "windows-msvc-x64",
+      "inherits": "vcpkg-ssr",
+      "displayName": "Windows MSVC x64 (SSR)",
+      "description": "Windows MSVC x64 build with local SSR vcpkg",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-windows"
+      }
+    },
+    {
+      "name": "windows-mingw-x64",
+      "inherits": "vcpkg-ssr",
+      "displayName": "Windows MinGW x64 (SSR)",
+      "description": "Windows MinGW x64 build with local SSR vcpkg",
+      "generator": "MinGW Makefiles",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-mingw-static"
+      }
+    },
+    {
+      "name": "macos-x64",
+      "inherits": "vcpkg-ssr",
+      "displayName": "macOS Intel x64 (SSR)",
+      "description": "macOS Intel x64 build with local SSR vcpkg",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-osx"
+      }
+    },
+    {
+      "name": "macos-arm64",
+      "inherits": "vcpkg-ssr",
+      "displayName": "macOS Apple Silicon ARM64 (SSR)",
+      "description": "macOS ARM64 build with local SSR vcpkg",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "arm64-osx"
+      }
+    },
+    {
+      "name": "macos-universal",
+      "inherits": "vcpkg-ssr",
+      "displayName": "macOS Universal Binary (SSR)",
+      "description": "macOS Universal build with local SSR vcpkg",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-osx",
+        "CMAKE_OSX_ARCHITECTURES": "x86_64;arm64"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "vcpkg-release",
+      "configurePreset": "vcpkg",
+      "displayName": "Build Release",
+      "description": "Release build with vcpkg"
+    },
+    {
+      "name": "vcpkg-debug", 
+      "configurePreset": "vcpkg-debug",
+      "displayName": "Build Debug",
+      "description": "Debug build with vcpkg"
+    },
+    {
+      "name": "conan-release",
+      "configurePreset": "conan",
+      "displayName": "Build with Conan",
+      "description": "Release build with Conan"
+    },
+    {
+      "name": "dev",
+      "configurePreset": "dev",
+      "displayName": "Development Build",
+      "description": "Development build with all features"
+    },
+    {
+      "name": "asan",
+      "configurePreset": "asan",
+      "displayName": "Build with AddressSanitizer",
+      "description": "Debug build with AddressSanitizer"
+    },
+    {
+      "name": "lsan",
+      "configurePreset": "lsan",
+      "displayName": "Build with LeakSanitizer",
+      "description": "Debug build with LeakSanitizer"
+    },
+    {
+      "name": "leak-detection",
+      "configurePreset": "leak-detection",
+      "displayName": "Build with Leak Detection",
+      "description": "Debug build with comprehensive leak detection"
+    },
+    {
+      "name": "linux-x64",
+      "configurePreset": "linux-x64",
+      "displayName": "Build Linux x64 (SSR)",
+      "description": "Build for Linux x64 with SSR vcpkg"
+    },
+    {
+      "name": "windows-msvc-x64",
+      "configurePreset": "windows-msvc-x64",
+      "displayName": "Build Windows MSVC x64 (SSR)",
+      "description": "Build for Windows MSVC x64 with SSR vcpkg"
+    },
+    {
+      "name": "windows-mingw-x64",
+      "configurePreset": "windows-mingw-x64",
+      "displayName": "Build Windows MinGW x64 (SSR)",
+      "description": "Build for Windows MinGW x64 with SSR vcpkg"
+    },
+    {
+      "name": "macos-x64",
+      "configurePreset": "macos-x64",
+      "displayName": "Build macOS x64 (SSR)",
+      "description": "Build for macOS Intel x64 with SSR vcpkg"
+    },
+    {
+      "name": "macos-arm64",
+      "configurePreset": "macos-arm64",
+      "displayName": "Build macOS ARM64 (SSR)",
+      "description": "Build for macOS Apple Silicon ARM64 with SSR vcpkg"
+    },
+    {
+      "name": "macos-universal",
+      "configurePreset": "macos-universal",
+      "displayName": "Build macOS Universal (SSR)",
+      "description": "Build for macOS Universal Binary with SSR vcpkg"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "vcpkg-tests",
+      "configurePreset": "vcpkg-debug",
+      "displayName": "Run tests",
+      "description": "Run all tests with vcpkg dependencies"
+    },
+    {
+      "name": "asan-tests",
+      "configurePreset": "asan",
+      "displayName": "AddressSanitizer Tests",
+      "description": "Run tests with AddressSanitizer"
+    },
+    {
+      "name": "lsan-tests",
+      "configurePreset": "lsan",
+      "displayName": "LeakSanitizer Tests",
+      "description": "Run tests with LeakSanitizer"
+    },
+    {
+      "name": "leak-detection-tests",
+      "configurePreset": "leak-detection",
+      "displayName": "Leak Detection Tests",
+      "description": "Run tests with comprehensive leak detection"
+    },
+    {
+      "name": "valgrind-tests",
+      "configurePreset": "valgrind",
+      "displayName": "Valgrind Tests",
+      "description": "Run tests with Valgrind"
+    },
+    {
+      "name": "default",
+      "configurePreset": "linux-x64",
+      "displayName": "Default SSR Tests",
+      "description": "Default test configuration for SSR pipeline"
+    }
+  ]
+}

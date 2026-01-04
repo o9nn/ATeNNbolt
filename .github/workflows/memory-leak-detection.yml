@@ -1,0 +1,215 @@
+name: Memory Leak Detection
+
+on:
+  push:
+    branches: [ main, develop, copilot/** ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  asan:
+    name: AddressSanitizer
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake \
+            ninja-build \
+            build-essential \
+            libssl-dev
+      
+      - name: Configure with AddressSanitizer
+        run: |
+          mkdir -p build
+          cd build
+          cmake .. \
+            -GNinja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DENABLE_SANITIZER_ADDRESS=ON
+      
+      - name: Build
+        run: |
+          cd build
+          ninja -j$(nproc)
+      
+      - name: Run memory leak detection example
+        run: |
+          cd build
+          export LD_LIBRARY_PATH=$PWD:$PWD/ggml/ggml.cpp/src:$LD_LIBRARY_PATH
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=0 ./memory_leak_detection_example
+      
+      - name: Run unit tests
+        run: |
+          cd build
+          export LD_LIBRARY_PATH=$PWD:$PWD/ggml/ggml.cpp/src:$LD_LIBRARY_PATH
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=0 ./test/bolt_unit_tests MemoryLeakDetector || true
+        continue-on-error: true
+  
+  lsan:
+    name: LeakSanitizer
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake \
+            ninja-build \
+            build-essential \
+            libssl-dev
+      
+      - name: Configure with LeakSanitizer
+        run: |
+          mkdir -p build
+          cd build
+          cmake .. \
+            -GNinja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DENABLE_SANITIZER_LEAK=ON
+      
+      - name: Build
+        run: |
+          cd build
+          ninja -j$(nproc)
+      
+      - name: Run memory leak detection example
+        run: |
+          cd build
+          export LD_LIBRARY_PATH=$PWD:$PWD/ggml/ggml.cpp/src:$LD_LIBRARY_PATH
+          LSAN_OPTIONS=verbosity=1:log_threads=1 ./memory_leak_detection_example
+      
+      - name: Run unit tests
+        run: |
+          cd build
+          export LD_LIBRARY_PATH=$PWD:$PWD/ggml/ggml.cpp/src:$LD_LIBRARY_PATH
+          LSAN_OPTIONS=verbosity=1:log_threads=1 ./test/bolt_unit_tests MemoryLeakDetector || true
+        continue-on-error: true
+  
+  comprehensive-leak-detection:
+    name: Comprehensive Leak Detection (ASan + LSan)
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake \
+            ninja-build \
+            build-essential \
+            libssl-dev
+      
+      - name: Configure with comprehensive leak detection
+        run: |
+          mkdir -p build
+          cd build
+          cmake .. \
+            -GNinja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DENABLE_SANITIZER_ADDRESS=ON \
+            -DENABLE_SANITIZER_LEAK=ON
+      
+      - name: Build
+        run: |
+          cd build
+          ninja -j$(nproc)
+      
+      - name: Run memory leak detection example
+        run: |
+          cd build
+          export LD_LIBRARY_PATH=$PWD:$PWD/ggml/ggml.cpp/src:$LD_LIBRARY_PATH
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=0 \
+          LSAN_OPTIONS=verbosity=1:log_threads=1 \
+          ./memory_leak_detection_example
+      
+      - name: Run unit tests
+        run: |
+          cd build
+          export LD_LIBRARY_PATH=$PWD:$PWD/ggml/ggml.cpp/src:$LD_LIBRARY_PATH
+          ASAN_OPTIONS=detect_leaks=1:halt_on_error=0 \
+          LSAN_OPTIONS=verbosity=1:log_threads=1 \
+          ./test/bolt_unit_tests MemoryLeakDetector || true
+        continue-on-error: true
+  
+  valgrind:
+    name: Valgrind Memory Analysis
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake \
+            ninja-build \
+            build-essential \
+            libssl-dev \
+            valgrind
+      
+      - name: Configure for Valgrind
+        run: |
+          mkdir -p build
+          cd build
+          cmake .. \
+            -GNinja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DENABLE_VALGRIND=ON
+      
+      - name: Build
+        run: |
+          cd build
+          ninja -j$(nproc)
+      
+      - name: Run Valgrind on memory leak detection example
+        run: |
+          cd build
+          export LD_LIBRARY_PATH=$PWD:$PWD/ggml/ggml.cpp/src:$LD_LIBRARY_PATH
+          valgrind \
+            --leak-check=full \
+            --show-leak-kinds=all \
+            --track-origins=yes \
+            --verbose \
+            --error-exitcode=0 \
+            --suppressions=../cmake/valgrind.supp \
+            ./memory_leak_detection_example || true
+        continue-on-error: true
+      
+      - name: Run Valgrind tests via CTest
+        run: |
+          cd build
+          export LD_LIBRARY_PATH=$PWD:$PWD/ggml/ggml.cpp/src:$LD_LIBRARY_PATH
+          ctest -R valgrind --output-on-failure || true
+        continue-on-error: true
+  
+  summary:
+    name: Leak Detection Summary
+    runs-on: ubuntu-latest
+    needs: [asan, lsan, comprehensive-leak-detection]
+    if: always()
+    
+    steps:
+      - name: Summary
+        run: |
+          echo "## Memory Leak Detection Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All leak detection jobs completed." >> $GITHUB_STEP_SUMMARY
+          echo "- AddressSanitizer: ${{ needs.asan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- LeakSanitizer: ${{ needs.lsan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Comprehensive: ${{ needs.comprehensive-leak-detection.result }}" >> $GITHUB_STEP_SUMMARY

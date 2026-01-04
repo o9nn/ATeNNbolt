@@ -1,0 +1,95 @@
+cmake_minimum_required(VERSION 3.15)
+project(bolt VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Add GGML as subdirectory (conditional)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/ggml/ggml.cpp")
+    add_subdirectory(ggml/ggml.cpp)
+    set(GGML_AVAILABLE TRUE)
+else()
+    set(GGML_AVAILABLE FALSE)
+    message(WARNING "GGML not found - AI functionality will be simulated")
+endif()
+
+# Main library - core components for DrawKern
+add_library(bolt_lib
+    src/bolt/core/bolt.cpp
+    src/bolt/core/memory_manager.cpp
+    src/bolt/core/memory_pool.cpp
+    src/bolt/core/message_handler.cpp
+    src/bolt/core/chat_store.cpp
+    src/bolt/core/editor_store.cpp
+    src/bolt/core/workbench_store.cpp
+    src/bolt/utils/string_utils.cpp
+    # Code folding integration
+    src/bolt/editor/code_folding.cpp
+    src/bolt/editor/code_folding_detector.cpp
+    src/bolt/editor/code_folding_manager.cpp
+    src/bolt/editor/code_folding_visibility.cpp
+    src/bolt/editor/code_folding_ui.cpp
+    src/bolt/editor/integrated_editor.cpp
+    src/bolt/editor/code_completion.cpp
+    # Multi-cursor editing support
+    src/bolt/editor/cursor_manager.cpp
+    src/bolt/editor/keyboard_shortcuts.cpp
+    # File tree navigation component
+    src/bolt/editor/file_tree_node.cpp
+    src/bolt/editor/file_tree_manager.cpp
+    src/bolt/editor/file_tree_ui.cpp
+    # Split view editing functionality
+    src/bolt/editor/split_view_manager.cpp
+    src/bolt/editor/editor_pane.cpp
+    # Minimap for large files
+    src/bolt/editor/minimap.cpp
+    src/bolt/editor/minimap_renderer.cpp
+    src/bolt/editor/minimap_ui.cpp
+    # Theme system implementation
+    src/bolt/editor/theme_system.cpp
+    # AI components (conditional)
+    src/bolt/ai/ggml.cpp
+    src/bolt/ai/rwkv_wrapper.cpp
+    src/bolt/ai/ai_completion_provider.cpp
+    # DrawKern - Revolutionary VM glyph rendering system!
+    src/bolt/drawkern/drawkern.cpp
+    src/bolt/drawkern/styx_protocol.cpp
+    src/bolt/drawkern/dis_vm.cpp
+    src/bolt/drawkern/yacc_grammar.cpp
+    src/bolt/drawkern/ai_integration.cpp
+)
+
+target_include_directories(bolt_lib PUBLIC
+    ${PROJECT_SOURCE_DIR}/include
+)
+
+# Link GGML if available
+if(GGML_AVAILABLE)
+    target_include_directories(bolt_lib PUBLIC
+        ${PROJECT_SOURCE_DIR}/ggml/ggml.cpp/include
+        ${PROJECT_SOURCE_DIR}/ggml/rwkv.cpp
+    )
+    target_link_libraries(bolt_lib PUBLIC ggml)
+endif()
+
+# Main executable
+add_executable(bolt src/bolt/main.cpp)
+target_link_libraries(bolt PRIVATE bolt_lib)
+
+# DrawKern demos (core functionality)
+add_executable(demo_drawkern demo_drawkern.cpp)
+target_link_libraries(demo_drawkern PRIVATE bolt_lib)
+
+add_executable(demo_drawkern_complete demo_drawkern_complete.cpp)
+target_link_libraries(demo_drawkern_complete PRIVATE bolt_lib)
+
+# AI Infrastructure demo
+add_executable(demo_ai_infrastructure demo_ai_infrastructure.cpp)
+target_link_libraries(demo_ai_infrastructure PRIVATE bolt_lib)
+
+# Tests
+enable_testing()
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/test")
+    add_subdirectory(test)
+endif()

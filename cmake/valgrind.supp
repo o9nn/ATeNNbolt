@@ -1,0 +1,72 @@
+# Valgrind Suppressions File
+# This file contains suppressions for known false positives in system libraries
+# and third-party dependencies used by Bolt C++ ML
+
+# OpenSSL suppressions
+{
+   openssl_conditional_jump
+   Memcheck:Cond
+   ...
+   obj:*/libssl.so.*
+}
+
+{
+   openssl_value
+   Memcheck:Value8
+   ...
+   obj:*/libssl.so.*
+}
+
+# GGML/llama.cpp suppressions
+{
+   ggml_uninitialized
+   Memcheck:Cond
+   ...
+   obj:*/libggml*.so*
+}
+
+# Standard library suppressions
+{
+   std_thread_create
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   ...
+   fun:_dl_allocate_tls
+   fun:pthread_create*
+}
+
+# ImGui suppressions (if using system package)
+{
+   imgui_mem
+   Memcheck:Leak
+   match-leak-kinds: possible
+   ...
+   obj:*/libimgui*.so*
+}
+
+# GLFW suppressions
+{
+   glfw_leak
+   Memcheck:Leak
+   match-leak-kinds: possible
+   ...
+   obj:*/libglfw*.so*
+}
+
+# OpenGL driver suppressions
+{
+   opengl_driver
+   Memcheck:Leak
+   match-leak-kinds: possible
+   ...
+   obj:*/libGL*.so*
+}
+
+{
+   mesa_driver
+   Memcheck:Leak
+   match-leak-kinds: possible
+   ...
+   obj:*/dri/*
+}

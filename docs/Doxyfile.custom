@@ -1,0 +1,120 @@
+# Doxyfile Configuration for Bolt C++ ML
+
+# Project settings
+PROJECT_NAME           = "Bolt C++ ML"
+PROJECT_NUMBER         = 1.0.0
+PROJECT_BRIEF          = "Modern C++ IDE with AI Integration"
+PROJECT_LOGO           =
+
+# Input settings
+INPUT                  = include/bolt src/bolt
+FILE_PATTERNS          = *.hpp *.cpp *.h *.c
+RECURSIVE              = YES
+EXCLUDE                = 
+EXCLUDE_PATTERNS       = */test/* */ggml/* */vcpkg_installed/*
+EXCLUDE_SYMBOLS        =
+
+# Output settings
+OUTPUT_DIRECTORY       = docs/api
+CREATE_SUBDIRS         = NO
+OUTPUT_LANGUAGE        = English
+
+# Build-related settings
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+EXTRACT_ANON_NSPACES   = NO
+
+# Documentation settings
+BRIEF_MEMBER_DESC      = YES
+REPEAT_BRIEF           = YES
+JAVADOC_AUTOBRIEF      = YES
+QT_AUTOBRIEF           = NO
+MULTILINE_CPP_IS_BRIEF = NO
+
+# Warning and progress settings
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = NO
+
+# Input file settings  
+RECURSIVE              = YES
+EXCLUDE_SYMLINKS       = NO
+
+# Source browsing settings
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+STRIP_CODE_COMMENTS    = YES
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+REFERENCES_LINK_SOURCE = YES
+
+# Alphabetical index settings
+ALPHABETICAL_INDEX     = YES
+COLS_IN_ALPHA_INDEX    = 5
+
+# HTML output settings
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+HTML_COLORSTYLE_HUE    = 220
+HTML_COLORSTYLE_SAT    = 100
+HTML_COLORSTYLE_GAMMA  = 80
+HTML_TIMESTAMP         = YES
+HTML_DYNAMIC_SECTIONS  = YES
+HTML_INDEX_NUM_ENTRIES = 100
+
+# Enable search
+SEARCHENGINE           = YES
+SERVER_BASED_SEARCH    = NO
+
+# LaTeX output (disabled by default)
+GENERATE_LATEX         = NO
+
+# RTF output (disabled)
+GENERATE_RTF           = NO
+
+# Man page output (disabled)
+GENERATE_MAN           = NO
+
+# XML output (disabled by default, can be enabled for other tools)
+GENERATE_XML           = NO
+
+# Preprocessor settings
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+EXPAND_ONLY_PREDEF     = NO
+SEARCH_INCLUDES        = YES
+INCLUDE_PATH           = include
+PREDEFINED             =
+
+# Dot/Graphviz settings
+HAVE_DOT               = YES
+DOT_NUM_THREADS        = 4
+DOT_FONTNAME           = Helvetica
+DOT_FONTSIZE           = 10
+CLASS_GRAPH            = YES
+COLLABORATION_GRAPH    = YES
+GROUP_GRAPHS           = YES
+UML_LOOK               = NO
+UML_LIMIT_NUM_FIELDS   = 10
+TEMPLATE_RELATIONS     = YES
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+GRAPHICAL_HIERARCHY    = YES
+DIRECTORY_GRAPH        = YES
+DOT_IMAGE_FORMAT       = png
+INTERACTIVE_SVG        = NO
+DOT_PATH               =
+DOTFILE_DIRS           =
+DOT_GRAPH_MAX_NODES    = 50
+MAX_DOT_GRAPH_DEPTH    = 0
+DOT_TRANSPARENT        = NO
+DOT_MULTI_TARGETS      = YES
+GENERATE_LEGEND        = YES
+DOT_CLEANUP            = YES

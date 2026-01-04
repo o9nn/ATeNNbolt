@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG  --coverage -Wl,--dependency-file=CMakeFiles/demo_code_analyzer_standalone.dir/link.d CMakeFiles/demo_code_analyzer_standalone.dir/demo_code_analyzer_standalone.cpp.o -o demo_code_analyzer_standalone  -Wl,-rpath,"\$ORIGIN/../lib:\$ORIGIN/lib:/usr/local/lib"

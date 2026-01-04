@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -O0 --coverage -fprofile-arcs -ftest-coverage -O3 -DNDEBUG  --coverage -Wl,--dependency-file=CMakeFiles/test_git_standalone.dir/link.d CMakeFiles/test_git_standalone.dir/test_git_standalone.cpp.o CMakeFiles/test_git_standalone.dir/src/bolt/git/git_repository.cpp.o -o test_git_standalone  -Wl,-rpath,"\$ORIGIN/../lib:\$ORIGIN/lib:/usr/local/lib"

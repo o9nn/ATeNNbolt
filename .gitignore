@@ -1,0 +1,75 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Build directories  
+build/
+.build/
+
+# SSR dependencies (vcpkg cloned locally)
+ssr_deps/
+
+# Package manager directories
+vcpkg_installed/
+conan-data/
+.conan/
+
+# IDEs
+.vscode/
+.vs/
+
+# OS
+.DS_Store
+
+# Replit
+.replit.pid
+
+# Keep small test models (but ignore large model downloads)
+!test/models/*.bin
+test/models/*
+!test/models/*.bin
+!test/models/README.md
+build-coverage/
+docs/api/
+
+# Model files (too large for git)
+test/data/models/*.gguf
+test/data/models/*.pth
+test/data/models/*.bin
+
+
+# Build directories
+build-shared/
+
+# vcpkg (use vcpkg.json manifest instead)
+vcpkg/
+vcpkg_installed/
